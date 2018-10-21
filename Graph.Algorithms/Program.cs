@@ -8,11 +8,15 @@ namespace Graph.Algorithms
     {
         static void Main(string[] args)
         {
-            var graph = GraphBuilder.GenerateGraph("../../../graph1.txt", allowSelfLoop: false, allowParallelEdges: false);
-            AnalyseGraph(graph);
+            //var graph = GraphBuilder.GenerateGraph("../../../graph1.txt", allowSelfLoop: false, allowParallelEdges: false);
+            //AnalyseGraph(graph);
 
-            var symbolGraph = GraphBuilder.GenerateSymbolGraph("../../../routes.txt", allowSelfLoop: false, allowParallelEdges: false);
-            AnalyseSymbolGraph(symbolGraph);
+            //var symbolGraph = GraphBuilder.GenerateSymbolGraph("../../../routes.txt", allowSelfLoop: false, allowParallelEdges: false);
+            //AnalyseSymbolGraph(symbolGraph);
+
+
+            var graph = GraphBuilder.GenerateGraph("../../../graph2.txt", allowSelfLoop: false, allowParallelEdges: false);
+            Console.WriteLine(graph.ToString());
 
             Console.ReadKey();
         }
