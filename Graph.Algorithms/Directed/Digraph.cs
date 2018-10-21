@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GraphAlgorithms.Directed
 {
-    public class Digraph
+    public class Digraph : IGraph
     {
         private List<List<int>> _adj = new List<List<int>>();
         private readonly bool _allowSelfLoops;

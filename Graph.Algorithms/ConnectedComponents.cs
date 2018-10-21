@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraphAlgorithms.Undirected
+namespace GraphAlgorithms
 {
     public class ConnectedComponents
     {
         private readonly List<bool> _marked;
         private readonly List<int> _id;
 
-        public ConnectedComponents(Graph g)
+        public ConnectedComponents(IGraph g)
         {
             _marked = new List<bool>(new bool[g.Vertices]);
             _id = new List<int>(new int[g.Vertices]);
@@ -23,7 +23,7 @@ namespace GraphAlgorithms.Undirected
             }
         }
 
-        private void DFS(Graph g, int v)
+        private void DFS(IGraph g, int v)
         {
             _marked[v] = true;
             _id[v] = Count;

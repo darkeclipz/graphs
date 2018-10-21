@@ -780,9 +780,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repos\\graphs\\Graph.Algorithms\\Graph.Algorithms.csproj",
+      "projectUniqueName": "D:\\Repos\\graphs\\Graph.Algorithms\\GraphAlgorithms.csproj",
       "projectName": "GraphAlgorithms",
-      "projectPath": "D:\\Repos\\graphs\\Graph.Algorithms\\Graph.Algorithms.csproj",
+      "projectPath": "D:\\Repos\\graphs\\Graph.Algorithms\\GraphAlgorithms.csproj",
       "packagesPath": "C:\\Users\\Isomorphism\\.nuget\\packages\\",
       "outputPath": "D:\\Repos\\graphs\\Graph.Algorithms\\obj\\",
       "projectStyle": "PackageReference",

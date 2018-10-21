@@ -149,7 +149,6 @@ ROT: DNH (degree: 1)
 Max degree: 5
 Average degree: 2,61538461538462
 
-
 Connected components (1 component):
 0: 0 1 2 3 4 5 6 7 8 9 10 11 12
 The graph is connected.
@@ -207,7 +206,7 @@ Eccentricities:
 
 ### Graph
 
-The `Graph` object requires a number of `vertices`. If `allowSelfLoops` is set to `true`, the graph will not check for self-loops when calling `AddEdge`. If `allowParallelEdges` is set to `true`, the graph will not check if the edge already exists when calling `AddEdge`. Both checks are set to `false` by default.
+The `Graph` object requires a number of `vertices`. If `allowSelfLoops` is set to `true`, the graph will not check for self-loops when calling `AddEdge`. If `allowParallelEdges` is set to `true`, the graph will not check if the edge already exists when calling `AddEdge`. Both are set to `true` by default.
 
 The `Graph` object contains the following properties/methods:
 

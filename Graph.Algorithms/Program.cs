@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GraphAlgorithms.Directed;
 using GraphAlgorithms.Undirected;
 
 namespace GraphAlgorithms
@@ -34,6 +35,13 @@ namespace GraphAlgorithms
 
             var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/digraph1.txt");
             Console.WriteLine(digraph.ToString());
+            Console.WriteLine(digraph.Reverse().ToString());
+
+            var ddfs = new DirectedDFS(digraph, 0);
+            Console.WriteLine(ddfs.ToString());
+
+            var cc = new ConnectedComponents(digraph);
+            Console.WriteLine(cc.ToString());
 
             Console.ReadKey();
         }

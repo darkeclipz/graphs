@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GraphAlgorithms.Undirected
 {
-    public class Graph
+    public class Graph : IGraph
     {
         private List<List<int>> _adj = new List<List<int>>();
         private readonly bool _allowSelfLoops;
