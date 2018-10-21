@@ -154,6 +154,7 @@ var topological = new Topological(digraph);
 If we print the result, this is the passphrase. We should skip `4` and `5` because those aren't in the passphrase at all.
 
 ```csharp
+Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no")}");
 Console.Write("PIN code: ");
 foreach (var o in topological.Order())
 {
@@ -166,5 +167,6 @@ Console.WriteLine();
 Which results in:
 
 ```
+Directed acyclic graph: yes
 PIN code: 73162890
 ```

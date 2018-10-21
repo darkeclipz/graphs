@@ -58,6 +58,7 @@ namespace GraphAlgorithms
             var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/pin.txt", allowParallelEdges: true, allowSelfLoop: false);
             var topological = new Topological(digraph);
 
+            Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no")}");
             Console.Write("PIN code: ");
             foreach (var o in topological.Order())
             {
