@@ -136,6 +136,21 @@ namespace Graph.Algorithms
 
             return girth;
         }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"Diameter: {Diameter()}");
+            sb.AppendLine($"Radius: {Radius()}");
+            sb.AppendLine($"Center: {Center()}");
+            sb.AppendLine($"Wiener-index: {WienerIndex()}");
+            sb.AppendLine($"Cyclic: {(Cyclic() ? "yes" : "no")}");
+            sb.AppendLine($"Girth: {Girth()}");
+            sb.AppendLine($"Eccentricities:");
+            for (int v = 0; v < _g.Vertices; v++)
+                sb.AppendLine($"  {v} with eccentricity {Eccentricity(v)}");
+            return sb.ToString();
+        }
     }
 
     public class NotConnectedGraphException : Exception { public NotConnectedGraphException(string message) : base(message) { } }

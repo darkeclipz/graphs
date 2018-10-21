@@ -24,10 +24,12 @@ namespace Graph.Algorithms
 
             var bfs = new BreadthFirstPaths(graph.Graph, graph.Index("DRA"));
             var sb = new StringBuilder();
-            foreach (var v in bfs.PathTo(graph.Index("JFK")))
+            foreach (var v in bfs.PathTo(graph.Index("UTR")))
                 sb.Append($"{graph.Name(v)}->");
             Console.WriteLine(sb.ToString().Substring(0, sb.ToString().Length - 2));
 
+            var prop = new GraphProperties(graph.Graph);
+            Console.WriteLine(prop.ToString());
 
             Console.ReadKey();
         }

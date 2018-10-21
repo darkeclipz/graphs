@@ -94,7 +94,7 @@ A graph is said to be _disconnected_ if it has more than a single component (mul
 
 ### Example with `SymbolGraph`
 
-The following graph is a not very accurate map of The Netherlands.
+The following graph is a -- not very accurate -- map of The Netherlands.
 
 ![graph 2](img/graph2.png)
 
@@ -155,6 +155,53 @@ Connected components (1 component):
 The graph is connected.
 ```
 
+If we want to find the shortest path from `DRA` to `UTR`:
+
+```csharp
+var bfs = new BreadthFirstPaths(graph.Graph, graph.Index("DRA"));
+var sb = new StringBuilder();
+foreach (var v in bfs.PathTo(graph.Index("UTR")))
+    sb.Append($"{graph.Name(v)}->");
+Console.WriteLine(sb.ToString().Substring(0, sb.ToString().Length - 2));
+```
+
+Which gives the following route:
+
+```
+DRA->ALM->AMS->UTR
+```
+
+We can also find more useful information about a graph with `GraphProperties`:
+
+```csharp
+var prop = new GraphProperties(graph.Graph);
+Console.WriteLine(prop.ToString());
+```
+
+Which gives the following information:
+
+```
+Diameter: 7
+Radius: 4
+Center: 4
+Wiener-index: 277
+Cyclic: yes
+Girth: 3
+Eccentricities:
+  0 with eccentricity 6
+  1 with eccentricity 5
+  2 with eccentricity 6
+  3 with eccentricity 6
+  4 with eccentricity 4
+  5 with eccentricity 7
+  6 with eccentricity 6
+  7 with eccentricity 5
+  8 with eccentricity 5
+  9 with eccentricity 5
+  10 with eccentricity 5
+  11 with eccentricity 6
+  12 with eccentricity 7
+```
 
 ## API
 
