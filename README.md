@@ -45,7 +45,7 @@ The following text can be used with the `GraphBuilder` to generate the graph.
 4 1
 ```
 
-We can load the graph in the following way:
+Load the graph in the following way:
 
 ```csharp
 var graph = GraphBuilder.GenerateGraph("../../../graph2.txt", allowSelfLoop: false, allowParallelEdges: false);
@@ -88,6 +88,8 @@ Connected components (3 components):
 The graph is disconnected.
 ```
 
+A graph is said to be _disconnected_ if it has more than a single component (multiple subgraphs).
+
 ## API
 
 ### Graph
@@ -104,6 +106,7 @@ The `Graph` object contains the following properties/methods:
  * `int Degree(int v)` returns the degree of vertex `v`.
  * `int MaxDegree()` returns the max degree of the graph.
  * `int AverageDegree()` returns the average degree of the graph, which is `2 * E / V`.
+ * `ParallelEdgesOrSelfLoopsAllowed` returns `true` if `allowSelfLoops` or `allowParallelEdges` is set.
 
  The graph can throw the following exceptions:
 
@@ -128,6 +131,38 @@ The `BreadthFirstPaths` object contains the following methods:
  * `bool HasPathTo(int v)` returns `true` if there is a path from the source `s` to `v`.
  * `IEnumerable<int> PathTo(int v)` returns an `IEnumerable` with the path from the source `s` to `v`.
  * `int DistanceTo(int v)` returns the distance from the source `s` to `v`.
+
+### Cycle
+
+The `Cycle` object will detect if a graph is cyclic. This assumes that the graph doesn't have any parallel edges or self-loops. The object requires a `Graph` object.
+
+The `Cycle` object has the following property:
+
+ * `HasCycle` return `true` if the graph is cyclic.
+
+### TwoColor
+
+The `TwoColor` object will check if the graph is bipartite, which means it can be colored with two colors, such that no adjacent vertices have the same color. The object requires a `Graph` object.
+
+The `TwoColor` object has the following property:
+
+ * `IsBipartite` returns `true` if the graph is two colorable.
+
+### GraphProperties
+
+The `GraphProperties` object gives additional information about a graph. This requires the graph to be connected (no subgraphs). The object requires a `Graph` object.
+
+The `GraphProperties` contains the following properties/methods:
+
+ * `int Eccentricity(int v)` returns the eccentricity of a vertex `v`.
+ * `int Diameter()` returns the diameter of the graph.
+ * `int Radius()` returns the radius of the graph.
+ * `int Center()` returns a center vertex.
+ * `int WienerIndex()` returns the Wiener index of the graph.
+ * `bool Cyclic()` returns `true` if the graph is cyclic. Uses the `Cycle` class.
+ * `int Girth()` returns the girth of the graph.
+
+The `Cyclic()` method requires the graph to have `ParallelEdgesOrSelfLoopsAllowed` evaluate to `false`.
 
 ### GraphBuilder
 
