@@ -18,7 +18,7 @@ This is an overview of the terminology:
 
 ## Example
 
-### Example graph 1
+### Example with `Graph`
 
 ![graph1](img/graph1.png)
 
@@ -89,6 +89,10 @@ The graph is disconnected.
 ```
 
 A graph is said to be _disconnected_ if it has more than a single component (multiple subgraphs).
+
+### Example with `SymbolGraph`
+
+An example with `SymbolGraph` and BFS.
 
 ## API
 
