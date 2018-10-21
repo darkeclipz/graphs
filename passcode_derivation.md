@@ -24,7 +24,7 @@ Because the order in which the characters are asked is ordered, this problem can
 
 ![passphrase](/img/passphrase.png)
 
-If we added more verification codes to the diagram, it is easily solvable by hand.
+If we would have added more verification codes to the diagram, it is easily solvable by hand.
 
 ## `Digraph` text format
 
