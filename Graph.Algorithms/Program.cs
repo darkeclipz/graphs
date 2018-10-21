@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using GraphAlgorithms.Directed;
 using GraphAlgorithms.Undirected;
@@ -42,6 +43,17 @@ namespace GraphAlgorithms
 
             var cc = new ConnectedComponents(digraph);
             Console.WriteLine(cc.ToString());
+
+            var directedCycle = new DirectedCycle(digraph);
+            Console.WriteLine($"Directed graph contains {(directedCycle.HasCycle() ? "a" : "no")} cycle.");
+            if (directedCycle.HasCycle())
+            {
+                Console.Write("There is a cycle in: ");
+                var cycle = new List<int>();
+                foreach (var v in directedCycle.Cycle())
+                    cycle.Add(v);
+                Console.WriteLine(String.Join("-", cycle));
+            }
 
             Console.ReadKey();
         }

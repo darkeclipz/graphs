@@ -2,6 +2,12 @@
 
 This repository contains various graph algorithms.
 
+## Applied examples
+
+ 1. Class prerequisite scheduling
+ 2. PIN code (Project Euler)
+ 3. ...
+
 ## Terminology
 
 This is an overview of the terminology:
@@ -274,7 +280,7 @@ The `Cycle` object will detect if a graph is cyclic. This assumes that the graph
 
 The `Cycle` object has the following property:
 
- * `HasCycle` return `true` if the graph is cyclic.
+ * `HasCycle` returns `true` if the graph is cyclic.
 
 ### TwoColor
 
