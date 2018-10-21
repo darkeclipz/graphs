@@ -257,6 +257,17 @@ The `SymbolGraph` object contains the following properties/methods:
  * `Graph Graph` returns the graph with integer indices.
  * `override string ToString()` returns a string representation of the graph.
 
+### ConnectedComponents
+
+The `ConnectedComponents` object detects all the connected components within the graph. It will return a list of subgraphs. The constructor requires an `IGraph` object, either a `Graph` or `Bigraph`.
+
+The `ConnectedComponents` object contains the following properties/methods:
+
+ * `bool Connected(int v, int w)` returns `true` if the vertices `v` and `w` are connected.
+ * `int Id(int v)` returns the component id of the vertex `v`.
+ * `int Count` returns the count of the components.
+ * `bool IsConnected` will return `true` if the graph is connected, i.e. there is only one component.
+
 ### Cycle
 
 The `Cycle` object will detect if a graph is cyclic. This assumes that the graph doesn't have any parallel edges or self-loops. The object requires a `Graph` object.
