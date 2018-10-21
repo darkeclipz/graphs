@@ -1,10 +1,12 @@
-﻿using System;
+﻿using GraphAlgorithms.Directed;
+using GraphAlgorithms.Undirected;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Graph.Algorithms
+namespace GraphAlgorithms
 {
     public class GraphBuilder
     {
@@ -22,6 +24,22 @@ namespace Graph.Algorithms
 
             return graph;
         }
+
+        public static Digraph GenerateDigraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)
+        {
+            var lines = File.ReadAllLines(file);
+            var vertices = int.Parse(lines[0]);
+            var digraph = new Digraph(vertices, allowSelfLoop, allowParallelEdges);
+
+            for (var i = 2; i < lines.Length; i++)
+            {
+                var connection = lines[i].Split(' ').Select(v => int.Parse(v)).ToList();
+                digraph.AddEdge(connection[0], connection[1]);
+            }
+
+            return digraph;
+        }
+
 
         public static SymbolGraph GenerateSymbolGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)
         {

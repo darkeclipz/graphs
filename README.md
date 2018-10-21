@@ -294,8 +294,8 @@ The `Cyclic()` method requires the graph to have `ParallelEdgesOrSelfLoopsAllowe
 
 The `GraphBuilder` object contains static methods to generate graphs. The `GraphBuilder` object contains the following methods:
 
- * `static Graph GenerateGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
- * `static SymbolGraph GenerateSymbolGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
+ * `Graph GenerateGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
+ * `SymbolGraph GenerateSymbolGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
 
 #### `Graph` format
 

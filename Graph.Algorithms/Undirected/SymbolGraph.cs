@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Graph.Algorithms
+namespace GraphAlgorithms.Undirected
 {
     public class SymbolGraph
     {

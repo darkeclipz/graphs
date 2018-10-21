@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Graph.Algorithms
+namespace GraphAlgorithms.Undirected
 {
     public class GraphProperties
     {
@@ -153,5 +153,5 @@ namespace Graph.Algorithms
         }
     }
 
-    public class NotConnectedGraphException : Exception { public NotConnectedGraphException(string message) : base(message) { } }
+    
 }

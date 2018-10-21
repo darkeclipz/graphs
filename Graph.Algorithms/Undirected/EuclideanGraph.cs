@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 
-namespace Graph.Algorithms
+namespace GraphAlgorithms.Undirected
 {
     public class EuclideanGraph
     {

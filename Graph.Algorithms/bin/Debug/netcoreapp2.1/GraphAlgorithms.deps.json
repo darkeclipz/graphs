@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "Graph.Algorithms/1.0.0": {
+      "GraphAlgorithms/1.0.0": {
         "dependencies": {
           "System.Drawing.Common": "4.5.1"
         },
         "runtime": {
-          "Graph.Algorithms.dll": {}
+          "GraphAlgorithms.dll": {}
         }
       },
       "Microsoft.Win32.SystemEvents/4.5.0": {
@@ -58,7 +58,7 @@
     }
   },
   "libraries": {
-    "Graph.Algorithms/1.0.0": {
+    "GraphAlgorithms/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

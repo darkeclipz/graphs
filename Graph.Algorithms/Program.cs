@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GraphAlgorithms.Undirected;
 
-namespace Graph.Algorithms
+namespace GraphAlgorithms
 {
     class Program
     {
@@ -15,21 +16,24 @@ namespace Graph.Algorithms
             //AnalyseSymbolGraph(symbolGraph);
 
 
-            var graph = GraphBuilder.GenerateSymbolGraph("../../../routes_nl.txt", allowSelfLoop: false, allowParallelEdges: false);
-            Console.WriteLine(graph.ToString());
+            //var graph = GraphBuilder.GenerateSymbolGraph("../../../routes_nl.txt", allowSelfLoop: false, allowParallelEdges: false);
+            //Console.WriteLine(graph.ToString());
 
-            var cc = new ConnectedComponents(graph.Graph);
-            Console.WriteLine("\r\n" + cc.ToString());
+            //var cc = new ConnectedComponents(graph.Graph);
+            //Console.WriteLine("\r\n" + cc.ToString());
 
 
-            var bfs = new BreadthFirstPaths(graph.Graph, graph.Index("DRA"));
-            var sb = new StringBuilder();
-            foreach (var v in bfs.PathTo(graph.Index("UTR")))
-                sb.Append($"{graph.Name(v)}->");
-            Console.WriteLine(sb.ToString().Substring(0, sb.ToString().Length - 2));
+            //var bfs = new BreadthFirstPaths(graph.Graph, graph.Index("DRA"));
+            //var sb = new StringBuilder();
+            //foreach (var v in bfs.PathTo(graph.Index("UTR")))
+            //    sb.Append($"{graph.Name(v)}->");
+            //Console.WriteLine(sb.ToString().Substring(0, sb.ToString().Length - 2));
 
-            var prop = new GraphProperties(graph.Graph);
-            Console.WriteLine(prop.ToString());
+            //var prop = new GraphProperties(graph.Graph);
+            //Console.WriteLine(prop.ToString());
+
+            var digraph = GraphBuilder.GenerateDigraph("../../../digraph1.txt");
+            Console.WriteLine(digraph.ToString());
 
             Console.ReadKey();
         }

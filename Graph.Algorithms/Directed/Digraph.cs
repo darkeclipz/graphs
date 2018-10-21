@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Graph.Algorithms
+namespace GraphAlgorithms.Directed
 {
-    public class Graph
+    public class Digraph
     {
         private List<List<int>> _adj = new List<List<int>>();
         private readonly bool _allowSelfLoops;
         private readonly bool _allowParallelEdges;
 
-        public Graph(int vertices, bool allowSelfLoops = true, bool allowParallelEdges = true)
+        public Digraph(int vertices, bool allowSelfLoops = true, bool allowParallelEdges = true)
         {
             Vertices = vertices;
             _allowSelfLoops = allowSelfLoops;
@@ -33,7 +33,6 @@ namespace Graph.Algorithms
                 throw new SelfLoopException($"Unable to add an edge from {v} to {w} because it would create a self loop.");
 
             _adj[v].Add(w);
-            _adj[w].Add(v);
             Edges++;
         }
 
@@ -41,6 +40,35 @@ namespace Graph.Algorithms
         {
             foreach (int i in _adj[v])
                 yield return i;
+        }
+
+        public Digraph Reverse()
+        {
+            var reversedGraph = new Digraph(Vertices, _allowSelfLoops, _allowParallelEdges);
+            for (int v = 0; v < Vertices; v++)
+                foreach (var w in Adjacent(v))
+                    reversedGraph.AddEdge(w, v);
+            return reversedGraph;
+        }
+
+        public static int DegreeOut(Digraph g, int v)
+        {
+            int degree = 0;
+            foreach (var w in g.Adjacent(v)) degree++;
+            return degree;
+        }
+
+        public static int MaxDegreeOut(Digraph g)
+        {
+            int maxDegreeOut = 0;
+            for (var i = 0; i < g.Vertices; i++)
+                maxDegreeOut = Math.Max(maxDegreeOut, DegreeOut(g, i));
+            return maxDegreeOut;
+        }
+
+        public static double AverageDegreeOut(Digraph g)
+        {
+            return (double)g.Edges / g.Vertices;
         }
 
         public override string ToString()
@@ -51,37 +79,12 @@ namespace Graph.Algorithms
                 sb.Append($"{i}:");
                 foreach (var edge in _adj[i])
                     sb.Append($" {edge}");
-                sb.Append($" (degree: {Degree(this, i)})");
+                sb.Append($" (degree out: {DegreeOut(this, i)})");
                 sb.Append("\r\n");
             }
-            sb.AppendLine($"Max degree: {MaxDegree(this)}");
-            sb.AppendLine($"Average degree: {AverageDegree(this)}");
+            sb.AppendLine($"Max degree out: {MaxDegreeOut(this)}");
+            sb.AppendLine($"Average degree out: {AverageDegreeOut(this)}");
             return sb.ToString();
-        }
-
-        public static int Degree(Graph g, int v)
-        {
-            var degree = 0;
-
-            foreach (var edge in g.Adjacent(v))
-                degree++;
-
-            return degree;
-        }
-
-        public static int MaxDegree(Graph g)
-        {
-            var maxDegree = 0;
-
-            for (var i = 0; i < g.Vertices; i++)
-                maxDegree = Math.Max(maxDegree, Degree(g, i));
-
-            return maxDegree;
-        }
-
-        public static double AverageDegree(Graph g)
-        {
-            return 2 * (double)g.Edges / g.Vertices;
         }
 
         public bool ParallelEdgesOrSelfLoopsAllowed
@@ -89,7 +92,4 @@ namespace Graph.Algorithms
             get => _allowSelfLoops || _allowParallelEdges;
         }
     }
-
-    public class SelfLoopException : Exception { public SelfLoopException(string message) : base(message) { } }
-    public class ParallelEdgeException : Exception { public ParallelEdgeException(string message) : base(message) { } }
 }
