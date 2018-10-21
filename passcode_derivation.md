@@ -145,7 +145,7 @@ Now we can load the graph into a `Digraph`:
 var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/pin.txt", allowParallelEdges: true, allowSelfLoop: false);
 ```
 
-And sort in topoligical order:
+And sort in topological order:
 
 ```csharp
 var topological = new Topological(digraph);
