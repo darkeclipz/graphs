@@ -18,6 +18,14 @@ Given that the three characters are always asked for in order, analyse the file 
 890 362 319 760 316 729 380 319 728 716
 ```
 
+## Analysis
+
+This problem is a directed acyclic graph. The topological order is the passphrase. If we visualize the problem:
+
+![passphrase](/img/passphrase.png)
+
+If we added more verification codes to the diagram, it is easily solvable by hand.
+
 ## `Bigraph` text format
 
 The following `Bigraph` text format is used to load the graph:
