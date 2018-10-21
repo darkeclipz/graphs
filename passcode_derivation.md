@@ -26,11 +26,11 @@ Because the order in which the characters are asked is ordered, this problem can
 
 If we added more verification codes to the diagram, it is easily solvable by hand.
 
-## `Bigraph` text format
+## `Digraph` text format
 
 We will create a graph with `10` vertices, although `4` and `5` are not used. We will filter out `4` and `5` later, when printing the resulting passphrase.
 
-The following `Bigraph` text format is used to load the graph:
+The following `Digraph` text format is used to load the graph:
 
 ```
 10
