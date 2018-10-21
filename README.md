@@ -146,7 +146,7 @@ The `SymbolGraph` object contains the following properties/methods:
  * `IEnumerable<string> Keys` returns an `IEnumberable` with the keys.
  * `int Index(string s)` returns the integer index of the symbol `s`.
  * `string Name(int v)` returns the symbol for the integer index `v`.
- * `Graph Graph` returns the graph.
+ * `Graph Graph` returns the graph with integer indices.
  * `override string ToString()` returns a string representation of the graph.
 
 ### Cycle
@@ -179,7 +179,7 @@ The `GraphProperties` contains the following properties/methods:
  * `bool Cyclic()` returns `true` if the graph is cyclic. Uses the `Cycle` object.
  * `int Girth()` returns the girth of the graph.
 
-The `Cyclic()` method requires the graph to have `ParallelEdgesOrSelfLoopsAllowed` evaluate to `false`.
+The `Cyclic()` method requires the graph to have `ParallelEdgesOrSelfLoopsAllowed` evaluate to `false`. If the graph is not connected, it will raise an `NotConnectedGraphException` exception.
 
 ### GraphBuilder
 
