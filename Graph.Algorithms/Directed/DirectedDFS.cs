@@ -35,10 +35,7 @@ namespace GraphAlgorithms.Directed
                 if (!_marked[w]) DFS(g, w);
         }
 
-        public bool Marked(int v)
-        {
-            return _marked[v];
-        }
+        public bool Marked(int v) => _marked[v];
 
         public override string ToString()
         {

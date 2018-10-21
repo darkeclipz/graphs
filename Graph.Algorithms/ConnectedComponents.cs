@@ -33,18 +33,9 @@ namespace GraphAlgorithms
                     DFS(g, w);
         }
 
-        public bool Connected(int v, int w)
-        {
-            return _id[v] == _id[w];
-        }
-
-        public int Id(int v)
-        {
-            return _id[v];
-        }
-
+        public bool Connected(int v, int w) => _id[v] == _id[w];
+        public int Id(int v) => _id[v];
         public int Count { get; }
-
         public bool IsConnected
         {
             get => Count == 1;

@@ -42,14 +42,7 @@ namespace GraphAlgorithms.Directed
             _onStack[v] = false;
          }
 
-        public bool HasCycle()
-        {
-            return _cycle != null;
-        }
-
-        public IEnumerable<int> Cycle()
-        {
-            return _cycle;
-        }
+        public bool HasCycle() => _cycle != null;
+        public IEnumerable<int> Cycle() => _cycle;
     }
 }

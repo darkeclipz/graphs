@@ -40,10 +40,7 @@ namespace GraphAlgorithms.Undirected
             }
         }
 
-        public bool HasPathTo(int v)
-        {
-            return _marked[v];
-        }
+        public bool HasPathTo(int v) => _marked[v];
 
         public IEnumerable<int> PathTo(int v)
         {
