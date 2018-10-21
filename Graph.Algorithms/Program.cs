@@ -15,11 +15,18 @@ namespace Graph.Algorithms
             //AnalyseSymbolGraph(symbolGraph);
 
 
-            var graph = GraphBuilder.GenerateGraph("../../../graph2.txt", allowSelfLoop: false, allowParallelEdges: false);
+            var graph = GraphBuilder.GenerateSymbolGraph("../../../routes_nl.txt", allowSelfLoop: false, allowParallelEdges: false);
             Console.WriteLine(graph.ToString());
 
-            var cc = new ConnectedComponents(graph);
+            var cc = new ConnectedComponents(graph.Graph);
             Console.WriteLine("\r\n" + cc.ToString());
+
+
+            var bfs = new BreadthFirstPaths(graph.Graph, graph.Index("DRA"));
+            var sb = new StringBuilder();
+            foreach (var v in bfs.PathTo(graph.Index("JFK")))
+                sb.Append($"{graph.Name(v)}->");
+            Console.WriteLine(sb.ToString().Substring(0, sb.ToString().Length - 2));
 
 
             Console.ReadKey();
