@@ -18,7 +18,7 @@ namespace GraphAlgorithms
 
             for(var i=2; i < lines.Length; i++)
             {
-                var connection = lines[i].Split(' ').Select(v => int.Parse(v)).ToList();
+                var connection = lines[i].Split(' ').Take(2).Select(v => int.Parse(v)).ToList();
                 graph.AddEdge(connection[0], connection[1]);
             }
 
@@ -33,7 +33,7 @@ namespace GraphAlgorithms
 
             for (var i = 2; i < lines.Length; i++)
             {
-                var connection = lines[i].Split(' ').Select(v => int.Parse(v)).ToList();
+                var connection = lines[i].Split(' ').Take(2).Select(v => int.Parse(v)).ToList();
                 digraph.AddEdge(connection[0], connection[1]);
             }
 

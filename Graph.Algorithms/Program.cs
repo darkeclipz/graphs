@@ -34,26 +34,38 @@ namespace GraphAlgorithms
             //var prop = new GraphProperties(graph.Graph);
             //Console.WriteLine(prop.ToString());
 
-            var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/digraph1.txt");
-            Console.WriteLine(digraph.ToString());
-            Console.WriteLine(digraph.Reverse().ToString());
+            //var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/digraph1.txt");
+            //Console.WriteLine(digraph.ToString());
+            //Console.WriteLine(digraph.Reverse().ToString());
 
-            var ddfs = new DirectedDFS(digraph, 0);
-            Console.WriteLine(ddfs.ToString());
+            //var ddfs = new DirectedDFS(digraph, 0);
+            //Console.WriteLine(ddfs.ToString());
 
-            var cc = new ConnectedComponents(digraph);
-            Console.WriteLine(cc.ToString());
+            //var cc = new ConnectedComponents(digraph);
+            //Console.WriteLine(cc.ToString());
 
-            var directedCycle = new DirectedCycle(digraph);
-            Console.WriteLine($"Directed graph contains {(directedCycle.HasCycle() ? "a" : "no")} cycle.");
-            if (directedCycle.HasCycle())
+            //var directedCycle = new DirectedCycle(digraph);
+            //Console.WriteLine($"Directed graph contains {(directedCycle.HasCycle() ? "a" : "no")} cycle.");
+            //if (directedCycle.HasCycle())
+            //{
+            //    Console.Write("There is a cycle in: ");
+            //    var cycle = new List<int>();
+            //    foreach (var v in directedCycle.Cycle())
+            //        cycle.Add(v);
+            //    Console.WriteLine(String.Join("-", cycle));
+            //}
+
+            var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/pin.txt", allowParallelEdges: true, allowSelfLoop: false);
+            var topological = new Topological(digraph);
+
+            Console.Write("PIN code: ");
+            foreach (var o in topological.Order())
             {
-                Console.Write("There is a cycle in: ");
-                var cycle = new List<int>();
-                foreach (var v in directedCycle.Cycle())
-                    cycle.Add(v);
-                Console.WriteLine(String.Join("-", cycle));
+                if (o == 4 || o == 5) continue;
+                Console.Write(o.ToString());
             }
+            Console.WriteLine();
+
 
             Console.ReadKey();
         }

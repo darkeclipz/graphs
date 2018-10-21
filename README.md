@@ -5,7 +5,7 @@ This repository contains various graph algorithms.
 ## Applied examples
 
  1. Class prerequisite scheduling
- 2. PIN code (Project Euler)
+ 2. [Passcode derivation (Project Euler)](/passcode_derivation.md)
  3. ...
 
 ## Terminology
