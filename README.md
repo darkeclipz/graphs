@@ -210,7 +210,9 @@ Eccentricities:
 
 ## API
 
-### Graph
+### Indirected graphs
+
+#### Graph
 
 The `Graph` object requires a number of `vertices`. If `allowSelfLoops` is set to `true`, the graph will not check for self-loops when calling `AddEdge`. If `allowParallelEdges` is set to `true`, the graph will not check if the edge already exists when calling `AddEdge`. Both are set to `true` by default.
 
@@ -231,7 +233,83 @@ The `Graph` object contains the following properties/methods:
  * `SelfLoopException` is raised when a self-loop is created and `allowSelfLoops` is `false`.
  * `ParallelEdgeException` is raised when a duplicate edge is created and `allowParallelEdges` is `false`.
 
- ### Digraph
+ 
+#### SymbolGraph
+
+The `SymbolGraph` object is a symbol table wrapper on the `Graph` object. It will map strings to an index-based graph. The constructor requires a `List<Tuple<string, string>>` of inputs, where each tuple is a from/to edge. It also has the `allowSelfLoops` and `allowParallelEdges` checks.
+
+The `SymbolGraph` object contains the following properties/methods:
+
+ * `bool Contains(string s)` returns `true` if the graph contains the symbol `s`.
+ * `IEnumerable<string> Keys` returns an `IEnumberable` with the keys.
+ * `int Index(string s)` returns the integer index of the symbol `s`.
+ * `string Name(int v)` returns the symbol for the integer index `v`.
+ * `Graph Graph` returns the graph with integer indices.
+ * `override string ToString()` returns a string representation of the graph.
+
+#### DepthFirstPaths
+
+The `DepthFirstPaths` object will run the DFS algorithm on the graph. The object requires a `Graph` and a source vertex `s`. If `detailedTrace` is set to `true`, the algorithm will print a detailed trace.
+
+The `DepthFirstPaths` object contains the following methods:
+
+ * `bool HasPathTo(int v)` returns `true` if there is a path from the source `s` to `v`.
+ * `IEnumerable<int> PathTo(int v)` returns an `IEnumerable` with the path from the source `s` to `v`.
+
+#### BreadthFirstPaths
+
+The `BreadthFirstPaths` object will run the BFS algorithm on the graph. The paths from BFS are shortest paths. The object requires a `Graph` and a source vertex `s`. 
+
+The `BreadthFirstPaths` object contains the following methods:
+
+ * `bool HasPathTo(int v)` returns `true` if there is a path from the source `s` to `v`.
+ * `IEnumerable<int> PathTo(int v)` returns an `IEnumerable` with the path from the source `s` to `v`.
+ * `int DistanceTo(int v)` returns the distance from the source `s` to `v`.
+
+#### Cycle
+
+The `Cycle` object will detect if a graph is cyclic. This assumes that the graph doesn't have any parallel edges or self-loops. The object requires a `Graph` object.
+
+The `Cycle` object has the following property:
+
+ * `HasCycle` returns `true` if the graph is cyclic.
+
+#### DirectedCycle
+
+The `DirectedCycle` object will detect cycles in a digraph. It will the path of the cycle. The object requires a `Digraph` object.
+
+The `DirectedCycle` object has the following methods:
+
+ * `bool HasCycle()` return `true` if the digraph has a cycle.
+ * `IEnumerator<int> Cycle()` returns an enumerator for the path.
+
+#### TwoColor
+
+The `TwoColor` object will check if the graph is bipartite, which means it can be colored with two colors, such that no adjacent vertices have the same color. The object requires a `Graph` object.
+
+The `TwoColor` object has the following property:
+
+ * `IsBipartite` returns `true` if the graph is two colorable.
+
+#### GraphProperties
+
+The `GraphProperties` object gives additional information about a graph. This requires the graph to be connected (no subgraphs). The object requires a `Graph` object.
+
+The `GraphProperties` contains the following properties/methods:
+
+ * `int Eccentricity(int v)` returns the eccentricity of a vertex `v`.
+ * `int Diameter()` returns the diameter of the graph.
+ * `int Radius()` returns the radius of the graph.
+ * `int Center()` returns a center vertex.
+ * `int WienerIndex()` returns the Wiener index of the graph.
+ * `bool Cyclic()` returns `true` if the graph is cyclic. Uses the `Cycle` object.
+ * `int Girth()` returns the girth of the graph.
+
+The `Cyclic()` method requires the graph to have `ParallelEdgesOrSelfLoopsAllowed` evaluate to `false`. If the graph is not connected, it will raise an `NotConnectedGraphException` exception.
+
+## Directed graphs
+
+#### Digraph
 
 The `Digraph` object requires a number of `vertices`. If `allowSelfLoops` is set to `true`, the graph will not check for self-loops when calling `AddEdge`. If `allowParallelEdges` is set to `true`, the graph will not check if the edge already exists when calling `AddEdge`. Both are set to `true` by default.
 
@@ -253,26 +331,7 @@ The `Diraph` object contains the following properties/methods:
  * `SelfLoopException` is raised when a self-loop is created and `allowSelfLoops` is `false`.
  * `ParallelEdgeException` is raised when a duplicate edge is created and `allowParallelEdges` is `false`.
 
-### DepthFirstPaths
-
-The `DepthFirstPaths` object will run the DFS algorithm on the graph. The object requires a `Graph` and a source vertex `s`. If `detailedTrace` is set to `true`, the algorithm will print a detailed trace.
-
-The `DepthFirstPaths` object contains the following methods:
-
- * `bool HasPathTo(int v)` returns `true` if there is a path from the source `s` to `v`.
- * `IEnumerable<int> PathTo(int v)` returns an `IEnumerable` with the path from the source `s` to `v`.
-
-### BreadthFirstPaths
-
-The `BreadthFirstPaths` object will run the BFS algorithm on the graph. The paths from BFS are shortest paths. The object requires a `Graph` and a source vertex `s`. 
-
-The `BreadthFirstPaths` object contains the following methods:
-
- * `bool HasPathTo(int v)` returns `true` if there is a path from the source `s` to `v`.
- * `IEnumerable<int> PathTo(int v)` returns an `IEnumerable` with the path from the source `s` to `v`.
- * `int DistanceTo(int v)` returns the distance from the source `s` to `v`.
- 
-### DirectedDFS
+#### DirectedDFS
 
 The `DirectedDFS` object will run the DFS algorithm on a digraph. The object requires a `Digraph` and a source vertex `s`, or a list of vertices.
 
@@ -281,7 +340,7 @@ The `DirectedDFS` object contains the following methods:
  * `bool Marked(int v)` return `true` if a vertex `v` is accessible from `s`.
  * `override string ToString()` returns a string representation of the reachable vertices.
 
-### DepthFirstOrder
+#### DepthFirstOrder
 
 The `DepthFirstOrder` object will generate various orders of the digraph. Thse methods are useful in advanced graph-processing algorithms. The constructor requires a `Digraph` object.
 
@@ -291,7 +350,7 @@ The `DepthFirstOrder` object contains the following methods:
  * `IEnumerable<int> Post()` returns an enumerator with the vertices in postorder.
  * `IEnumerable<int> ReversePost()` returns an enumerator with the vertices in reverse postorder.
 
-### Topological
+#### Topological
 
 The `Topological` object will sort a directed acyclid graph (DAG) in topological order. The constructor requires a `Digraph` object.
 
@@ -299,20 +358,9 @@ The `Topological` object contains the following methods:
 
  * `IEnumerable<int> Order()` returns an enumerator with the vertices of the DAG in topological order.
 
-### SymbolGraph
+### Both graphs
 
-The `SymbolGraph` object is a symbol table wrapper on the `Graph` object. It will map strings to an index-based graph. The constructor requires a `List<Tuple<string, string>>` of inputs, where each tuple is a from/to edge. It also has the `allowSelfLoops` and `allowParallelEdges` checks.
-
-The `SymbolGraph` object contains the following properties/methods:
-
- * `bool Contains(string s)` returns `true` if the graph contains the symbol `s`.
- * `IEnumerable<string> Keys` returns an `IEnumberable` with the keys.
- * `int Index(string s)` returns the integer index of the symbol `s`.
- * `string Name(int v)` returns the symbol for the integer index `v`.
- * `Graph Graph` returns the graph with integer indices.
- * `override string ToString()` returns a string representation of the graph.
-
-### ConnectedComponents
+#### ConnectedComponents
 
 The `ConnectedComponents` object detects all the connected components within the graph. It will return a list of subgraphs. The constructor requires an `IGraph` object, either a `Graph` or `Digraph`.
 
@@ -323,55 +371,16 @@ The `ConnectedComponents` object contains the following properties/methods:
  * `int Count` returns the count of the components.
  * `bool IsConnected` will return `true` if the graph is connected, i.e. there is only one component.
 
-### Cycle
+### Graph builders
 
-The `Cycle` object will detect if a graph is cyclic. This assumes that the graph doesn't have any parallel edges or self-loops. The object requires a `Graph` object.
-
-The `Cycle` object has the following property:
-
- * `HasCycle` returns `true` if the graph is cyclic.
-
-### DirectedCycle
-
-The `DirectedCycle` object will detect cycles in a digraph. It will the path of the cycle. The object requires a `Digraph` object.
-
-The `DirectedCycle` object has the following methods:
-
- * `bool HasCycle()` return `true` if the digraph has a cycle.
- * `IEnumerator<int> Cycle()` returns an enumerator for the path.
-
-### TwoColor
-
-The `TwoColor` object will check if the graph is bipartite, which means it can be colored with two colors, such that no adjacent vertices have the same color. The object requires a `Graph` object.
-
-The `TwoColor` object has the following property:
-
- * `IsBipartite` returns `true` if the graph is two colorable.
-
-### GraphProperties
-
-The `GraphProperties` object gives additional information about a graph. This requires the graph to be connected (no subgraphs). The object requires a `Graph` object.
-
-The `GraphProperties` contains the following properties/methods:
-
- * `int Eccentricity(int v)` returns the eccentricity of a vertex `v`.
- * `int Diameter()` returns the diameter of the graph.
- * `int Radius()` returns the radius of the graph.
- * `int Center()` returns a center vertex.
- * `int WienerIndex()` returns the Wiener index of the graph.
- * `bool Cyclic()` returns `true` if the graph is cyclic. Uses the `Cycle` object.
- * `int Girth()` returns the girth of the graph.
-
-The `Cyclic()` method requires the graph to have `ParallelEdgesOrSelfLoopsAllowed` evaluate to `false`. If the graph is not connected, it will raise an `NotConnectedGraphException` exception.
-
-### GraphBuilder
+#### GraphBuilder
 
 The `GraphBuilder` object contains static methods to generate graphs. The `GraphBuilder` object contains the following methods:
 
  * `Graph GenerateGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
  * `SymbolGraph GenerateSymbolGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
 
-#### `Graph` format
+##### `Graph` format
 
 The text file format for a `Graph` is:
 ```
@@ -382,7 +391,7 @@ from to
 ...
 ```
 
-#### `SymbolGraph` format
+##### `SymbolGraph` format
 
 The text file format for a `SymbolGraph` is:
 
@@ -393,9 +402,11 @@ from to
 ...
 ```
 
-### EuclideanGraph
+### Other
 
-The `EuclideanGraph` object will create an ugly image of a graph.
+#### EuclideanGraph
+
+The `EuclideanGraph` object will create an ugly image of a `Graph`.
 
 The `EuclideanGraph` object contains the following static method:
 
