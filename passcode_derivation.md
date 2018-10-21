@@ -20,13 +20,15 @@ Given that the three characters are always asked for in order, analyse the file 
 
 ## Analysis
 
-This problem is a directed acyclic graph. The topological order is the passphrase. If we visualize the problem:
+Because the order in which the characters are asked is ordered, this problem can be represented with a directed acyclic graph. If we sort the graph in topological order, the result is the passphrase. If we visualize the problem:
 
 ![passphrase](/img/passphrase.png)
 
 If we added more verification codes to the diagram, it is easily solvable by hand.
 
 ## `Bigraph` text format
+
+We will create a graph with `10` vertices, although `4` and `5` are not used. We will filter out `4` and `5` later, when printing the resulting passphrase.
 
 The following `Bigraph` text format is used to load the graph:
 
@@ -137,3 +139,32 @@ The following `Bigraph` text format is used to load the graph:
 
 ## Solving the problem
 
+Now we can load the graph into a `Digraph`:
+
+```csharp
+var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/pin.txt", allowParallelEdges: true, allowSelfLoop: false);
+```
+
+And sort in topoligical order:
+
+```csharp
+var topological = new Topological(digraph);
+```
+
+If we print the result, this is the passphrase. We should skip `4` and `5` because those aren't in the passphrase at all.
+
+```csharp
+Console.Write("PIN code: ");
+foreach (var o in topological.Order())
+{
+    if (o == 4 || o == 5) continue;
+    Console.Write(o.ToString());
+}
+Console.WriteLine();
+```
+
+Which results in:
+
+```
+PIN code: 73162890
+```
