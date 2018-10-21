@@ -31,6 +31,4 @@ namespace GraphAlgorithms.Undirected
 
         public bool HasCycle { get; private set; }
     }
-
-    public class ParallelEdgesOrSelfLoopsAllowedException : Exception { public ParallelEdgesOrSelfLoopsAllowedException(string message) : base(message) { } };
 }

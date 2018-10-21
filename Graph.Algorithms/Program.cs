@@ -32,7 +32,7 @@ namespace GraphAlgorithms
             //var prop = new GraphProperties(graph.Graph);
             //Console.WriteLine(prop.ToString());
 
-            var digraph = GraphBuilder.GenerateDigraph("../../../digraph1.txt");
+            var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/digraph1.txt");
             Console.WriteLine(digraph.ToString());
 
             Console.ReadKey();
