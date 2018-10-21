@@ -4,8 +4,8 @@ This repository contains various graph algorithms.
 
 ## Applied examples
 
- 1. Class prerequisite scheduling
- 2. [Passcode derivation (Project Euler)](/passcode_derivation.md)
+ 1. [Passcode derivation (Project Euler)](/passcode_derivation.md)
+ 2. Mathematics prerequisite scheduling
  3. ...
 
 ## Terminology
@@ -231,6 +231,28 @@ The `Graph` object contains the following properties/methods:
  * `SelfLoopException` is raised when a self-loop is created and `allowSelfLoops` is `false`.
  * `ParallelEdgeException` is raised when a duplicate edge is created and `allowParallelEdges` is `false`.
 
+ ### Digraph
+
+The `Digraph` object requires a number of `vertices`. If `allowSelfLoops` is set to `true`, the graph will not check for self-loops when calling `AddEdge`. If `allowParallelEdges` is set to `true`, the graph will not check if the edge already exists when calling `AddEdge`. Both are set to `true` by default.
+
+The `Diraph` object contains the following properties/methods:
+
+ * `Vertices` returns the number of vertices.
+ * `Edges` returns the number of edges.
+ * `void AddEdge(int v, int u)` adds an edge from `v` to `u`.
+ * `IEnumerable<int> Adjacent(int v)` returns an `IEnumerable` for the adjacent vertices of `v`.
+ * `override string ToString()` returns a string representation of the graph.
+ * `Digraph Reverse()` returns the digraph with reversed edges.
+ * `int DegreeOut(int v)` returns the degree of vertex `v`.
+ * `int MaxDegreeOut()` returns the max degree of the graph.
+ * `int AverageDegreeOut()` returns the average degree of the graph, which is `E / V`.
+ * `ParallelEdgesOrSelfLoopsAllowed` returns `true` if `allowSelfLoops` or `allowParallelEdges` is set.
+
+ The graph can throw the following exceptions:
+
+ * `SelfLoopException` is raised when a self-loop is created and `allowSelfLoops` is `false`.
+ * `ParallelEdgeException` is raised when a duplicate edge is created and `allowParallelEdges` is `false`.
+
 ### DepthFirstPaths
 
 The `DepthFirstPaths` object will run the DFS algorithm on the graph. The object requires a `Graph` and a source vertex `s`. If `detailedTrace` is set to `true`, the algorithm will print a detailed trace.
@@ -249,6 +271,33 @@ The `BreadthFirstPaths` object contains the following methods:
  * `bool HasPathTo(int v)` returns `true` if there is a path from the source `s` to `v`.
  * `IEnumerable<int> PathTo(int v)` returns an `IEnumerable` with the path from the source `s` to `v`.
  * `int DistanceTo(int v)` returns the distance from the source `s` to `v`.
+ 
+### DirectedDFS
+
+The `DirectedDFS` object will run the DFS algorithm on a digraph. The object requires a `Digraph` and a source vertex `s`, or a list of vertices.
+
+The `DirectedDFS` object contains the following methods:
+
+ * `bool Marked(int v)` return `true` if a vertex `v` is accessible from `s`.
+ * `override string ToString()` returns a string representation of the reachable vertices.
+
+### DepthFirstOrder
+
+The `DepthFirstOrder` object will generate various orders of the digraph. Thse methods are useful in advanced graph-processing algorithms. The constructor requires a `Digraph` object.
+
+The `DepthFirstOrder` object contains the following methods:
+
+ * `IEnumerable<int> Pre()` returns an enumerator with the vertices in preorder.
+ * `IEnumerable<int> Post()` returns an enumerator with the vertices in postorder.
+ * `IEnumerable<int> ReversePost()` returns an enumerator with the vertices in reverse postorder.
+
+### Topological
+
+The `Topological` object will sort a directed acyclid graph (DAG) in topological order. The constructor requires a `Digraph` object.
+
+The `Topological` object contains the following methods:
+
+ * `IEnumerable<int> Order()` returns an enumerator with the vertices of the DAG in topological order.
 
 ### SymbolGraph
 
@@ -281,6 +330,15 @@ The `Cycle` object will detect if a graph is cyclic. This assumes that the graph
 The `Cycle` object has the following property:
 
  * `HasCycle` returns `true` if the graph is cyclic.
+
+### DirectedCycle
+
+The `DirectedCycle` object will detect cycles in a digraph. It will the path of the cycle. The object requires a `Digraph` object.
+
+The `DirectedCycle` object has the following methods:
+
+ * `bool HasCycle()` return `true` if the digraph has a cycle.
+ * `IEnumerator<int> Cycle()` returns an enumerator for the path.
 
 ### TwoColor
 
