@@ -352,7 +352,7 @@ The `DepthFirstOrder` object contains the following methods:
 
 #### Topological
 
-The `Topological` object will sort a directed acyclid graph (DAG) in topological order. The constructor requires a `Digraph` object.
+The `Topological` object will sort a directed acyclic graph (DAG) in topological order. The constructor requires a `Digraph` object.
 
 The `Topological` object contains the following methods:
 
