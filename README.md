@@ -71,6 +71,23 @@ Max degree: 4
 Average degree: 2,66666666666667
 ```
 
+To find all the connected components in this graph, use the `ConnectedComponent` object:
+
+```csharp
+var cc = new ConnectedComponents(graph);
+Console.WriteLine("\r\n" + cc.ToString());
+```
+
+Which result in the followng connected components:
+
+```
+Connected components (3 components):
+0: 0 2 3 5 6 10
+1: 1 4 7 8 11
+2: 9
+The graph is disconnected.
+```
+
 ## API
 
 ### Graph

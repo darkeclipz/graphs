@@ -18,6 +18,10 @@ namespace Graph.Algorithms
             var graph = GraphBuilder.GenerateGraph("../../../graph2.txt", allowSelfLoop: false, allowParallelEdges: false);
             Console.WriteLine(graph.ToString());
 
+            var cc = new ConnectedComponents(graph);
+            Console.WriteLine("\r\n" + cc.ToString());
+
+
             Console.ReadKey();
         }
 
