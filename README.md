@@ -75,7 +75,7 @@ To find all the connected components in this graph, use the `ConnectedComponent`
 
 ```csharp
 var cc = new ConnectedComponents(graph);
-Console.WriteLine("\r\n" + cc.ToString());
+Console.WriteLine(cc.ToString());
 ```
 
 Which result in the followng connected components:
@@ -106,7 +106,7 @@ The `Graph` object contains the following properties/methods:
  * `Edges` returns the number of edges.
  * `void AddEdge(int v, int u)` adds an edge from `v` to `u`.
  * `IEnumerable<int> Adjacent(int v)` returns an `IEnumerable` for the adjacent vertices of `v`.
- * `string ToString()` returns a string representation of the graph.
+ * `override string ToString()` returns a string representation of the graph.
  * `int Degree(int v)` returns the degree of vertex `v`.
  * `int MaxDegree()` returns the max degree of the graph.
  * `int AverageDegree()` returns the average degree of the graph, which is `2 * E / V`.
@@ -114,8 +114,8 @@ The `Graph` object contains the following properties/methods:
 
  The graph can throw the following exceptions:
 
- * `SelfLoopException` is called when a self-loop is created and `allowSelfLoops` is `false`.
- * `ParallelEdgeException` is called when a duplicate edge is created and `allowParallelEdges` is `false`.
+ * `SelfLoopException` is raised when a self-loop is created and `allowSelfLoops` is `false`.
+ * `ParallelEdgeException` is raised when a duplicate edge is created and `allowParallelEdges` is `false`.
 
 ### DepthFirstPaths
 
@@ -135,6 +135,19 @@ The `BreadthFirstPaths` object contains the following methods:
  * `bool HasPathTo(int v)` returns `true` if there is a path from the source `s` to `v`.
  * `IEnumerable<int> PathTo(int v)` returns an `IEnumerable` with the path from the source `s` to `v`.
  * `int DistanceTo(int v)` returns the distance from the source `s` to `v`.
+
+### SymbolGraph
+
+The `SymbolGraph` object is a symbol table wrapper on the `Graph` object. It will map strings to an index-based graph. The constructor requires a `List<Tuple<string, string>>` of inputs, where each tuple is a from/to edge. It also has the `allowSelfLoops` and `allowParallelEdges` checks.
+
+The `SymbolGraph` object contains the following properties/methods:
+
+ * `bool Contains(string s)` returns `true` if the graph contains the symbol `s`.
+ * `IEnumerable<string> Keys` returns an `IEnumberable` with the keys.
+ * `int Index(string s)` returns the integer index of the symbol `s`.
+ * `string Name(int v)` returns the symbol for the integer index `v`.
+ * `Graph Graph` returns the graph.
+ * `override string ToString()` returns a string representation of the graph.
 
 ### Cycle
 
@@ -163,12 +176,19 @@ The `GraphProperties` contains the following properties/methods:
  * `int Radius()` returns the radius of the graph.
  * `int Center()` returns a center vertex.
  * `int WienerIndex()` returns the Wiener index of the graph.
- * `bool Cyclic()` returns `true` if the graph is cyclic. Uses the `Cycle` class.
+ * `bool Cyclic()` returns `true` if the graph is cyclic. Uses the `Cycle` object.
  * `int Girth()` returns the girth of the graph.
 
 The `Cyclic()` method requires the graph to have `ParallelEdgesOrSelfLoopsAllowed` evaluate to `false`.
 
 ### GraphBuilder
 
-The `GraphBuilder` object contains static methods to generate graph objects.
+The `GraphBuilder` object contains static methods to generate graphs.
 
+### EuclideanGraph
+
+The `EuclideanGraph` object will create an ugly image of a graph.
+
+The `EuclideanGraph` object contains the following static method:
+
+ * `static void ToImage(Graph g)` which will save the image to `graph_{DateTime.Now.ToString("yyyyMMdd_hhmmss_ffff")}.jpg` in the current working directory.

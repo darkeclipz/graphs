@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Graph.Algorithms
 {
-    public class EuclidianGraph
+    public class EuclideanGraph
     {
         public static void ToImage(Graph g)
         {
