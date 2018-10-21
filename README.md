@@ -343,7 +343,7 @@ The `DirectedDFS` object contains the following methods:
 
 #### DepthFirstOrder
 
-The `DepthFirstOrder` object will generate various orders of the digraph. Thse methods are useful in advanced graph-processing algorithms. The constructor requires a `Digraph` object.
+The `DepthFirstOrder` object will generate various orders of the digraph. These methods are useful in advanced graph-processing algorithms. The constructor requires a `Digraph` object.
 
 The `DepthFirstOrder` object contains the following methods:
 
