@@ -96,11 +96,7 @@ namespace GraphAlgorithms.Undirected
         /// Determines if the graph is cyclic or acyclic.
         /// </summary>
         /// <returns></returns>
-        public bool Cyclic()
-        {
-            var cycle = new Cycle(_g);
-            return cycle.HasCycle;
-        }
+        public bool Cyclic() => new Cycle(_g).HasCycle;
 
         /// <summary>
         /// The girth is the length of the shortest cycle in the graph.
