@@ -259,7 +259,7 @@ The `SymbolGraph` object contains the following properties/methods:
 
 ### ConnectedComponents
 
-The `ConnectedComponents` object detects all the connected components within the graph. It will return a list of subgraphs. The constructor requires an `IGraph` object, either a `Graph` or `Bigraph`.
+The `ConnectedComponents` object detects all the connected components within the graph. It will return a list of subgraphs. The constructor requires an `IGraph` object, either a `Graph` or `Digraph`.
 
 The `ConnectedComponents` object contains the following properties/methods:
 
