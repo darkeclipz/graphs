@@ -21,6 +21,7 @@ This is an overview of the terminology:
  * _center_: any vertex is a _center_ if it's eccentricity is the radius.
  * _Wiener index_: the _Wiener index_ of a graph is the sum of the lengths of the shortest possible paths between all pair of vertices.
  * _girth_: the _girth_ of a graph is the length of the shortest cycle in the graph.
+ * _DAG_: a _DAG_ is a directed acyclic graph.
 
 ## Example
 
