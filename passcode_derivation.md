@@ -1,6 +1,6 @@
 # Passcode derivation
 
-The following problem is a problem from [Project Euler](http://projecteuler.net).
+The following problem is a problem 79 from [Project Euler](http://projecteuler.net).
 
 ## Problem
 
