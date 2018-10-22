@@ -379,14 +379,14 @@ The `Topological` object contains the following methods:
 
 The `KosarajuSharirSCC` object will find the strongly connected components with a digraph. The constructor requires a `Digraph` object.
 
-The algorithm helps to answer questions such as: _Are two given vertices strong connected?_ and _How many strong components does the digraph have?_.
-
 The `KosarajuSharirSCC` object contains the following properties/methods:
 
  * `bool StronglyConnected(int v, int w)` returns `true` if the vertices `v` and `w` are strongly connected.
  * `int Id(int v)` returns the identifier of the strongly connected component.
  * `int Count` returns the number of strongly connected components.
  * `override string ToString()` returns a string representation of the SCC.
+
+ The Kosaraju-Sharir algorithm helps to answer questions such as: _Are two given vertices strong connected?_ and _How many strong components does the digraph have?_.
 
 ### Graph builders
 
@@ -418,6 +418,8 @@ from to
 from to
 ...
 ```
+
+More examples can be found in the `Graph.Algorithms/Graphs` folder.
 
 ### Other
 
