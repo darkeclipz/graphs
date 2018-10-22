@@ -18,15 +18,14 @@ namespace GraphAlgorithms.Undirected
             _source = s;
             _detailedTrace = detailedTrace;
             if(detailedTrace)
-            {
                 Console.WriteLine("DFS - detailed trace:");
-            }
             DFS(g, s);
         }
 
         private void DFS(Graph g, int v, int depth = 0)
         {
-            if (_detailedTrace) Console.WriteLine("".PadLeft(depth * 2, ' ') + $"dfs({v})");
+            if (_detailedTrace)
+                Console.WriteLine("".PadLeft(depth * 2, ' ') + $"dfs({v})");
 
             _marked[v] = true;
 
@@ -38,9 +37,7 @@ namespace GraphAlgorithms.Undirected
                     DFS(g, w, depth + 1);
                 }
                 else if(_detailedTrace)
-                {
                     Console.WriteLine("".PadLeft(depth * 2, ' ') + $"check {w}");
-                }
             }
 
             if (_detailedTrace) Console.WriteLine("".PadLeft(depth * 2, ' ') + $"done {v}");

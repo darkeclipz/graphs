@@ -9,4 +9,5 @@ namespace GraphAlgorithms
     public class SelfLoopException : Exception { public SelfLoopException(string message) : base(message) { } }
     public class ParallelEdgeException : Exception { public ParallelEdgeException(string message) : base(message) { } }
     public class ParallelEdgesOrSelfLoopsAllowedException : Exception { public ParallelEdgesOrSelfLoopsAllowedException(string message) : base(message) { } };
+    public class InconsistentEdgeException : Exception { public InconsistentEdgeException(string message) : base(message) { } };
 }
