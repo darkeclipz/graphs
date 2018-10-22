@@ -26,6 +26,9 @@ namespace GraphAlgorithms.Directed
 
         public void AddEdge(int v, int w)
         {
+            if (v >= Vertices)
+                throw new VertexIndexOutOfRangeException($"Unable to add edge because vertex {v} doesn't exist (total vertices: {Vertices}).");
+
             if (!_allowParallelEdges && _adj[v].Contains(w))
                 throw new ParallelEdgeException($"Unable to add an edge from {v} to {w} because it would create a parallel edge.");
 

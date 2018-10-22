@@ -55,17 +55,20 @@ namespace GraphAlgorithms
             //    Console.WriteLine(String.Join("-", cycle));
             //}
 
-            var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/pin.txt", allowParallelEdges: true, allowSelfLoop: false);
-            var topological = new Topological(digraph);
+            var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/digraph2.txt", allowParallelEdges: false, allowSelfLoop: false);
+            //var topological = new Topological(digraph);
 
-            Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no")}");
-            Console.Write("PIN code: ");
-            foreach (var o in topological.Order())
-            {
-                if (o == 4 || o == 5) continue;
-                Console.Write(o.ToString());
-            }
-            Console.WriteLine();
+            //Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no")}");
+            //Console.Write("PIN code: ");
+            //foreach (var o in topological.Order())
+            //{
+            //    if (o == 4 || o == 5) continue;
+            //    Console.Write(o.ToString());
+            //}
+            //Console.WriteLine();
+
+            var scc = new KosarajuSharirSCC(digraph);
+            Console.WriteLine(scc.ToString());
 
 
             Console.ReadKey();

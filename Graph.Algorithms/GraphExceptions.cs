@@ -4,6 +4,7 @@ using System.Text;
 
 namespace GraphAlgorithms
 {
+    public class VertexIndexOutOfRangeException : Exception { public VertexIndexOutOfRangeException(string message) : base(message) { } }
     public class NotConnectedGraphException : Exception { public NotConnectedGraphException(string message) : base(message) { } }
     public class SelfLoopException : Exception { public SelfLoopException(string message) : base(message) { } }
     public class ParallelEdgeException : Exception { public ParallelEdgeException(string message) : base(message) { } }
