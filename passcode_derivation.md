@@ -20,7 +20,7 @@ Given that the three characters are always asked for in order, analyse the file 
 
 ## Analysis
 
-Because the order in which the characters are asked is ordered, this problem can be represented with a directed acyclic graph. If we sort the graph in topological order, the result is the passphrase. If we visualize the problem:
+Because the characters are always asked in order, this problem can be represented with a directed acyclic graph. If we sort the graph in topological order, the result is the passphrase. If we visualize the problem:
 
 ![passphrase](/img/passphrase.png)
 
