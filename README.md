@@ -211,6 +211,10 @@ Eccentricities:
 
 ## API
 
+The implementations of the algorithms are far from complete. The goal of this repository is to have a set of biolerplate algorithms. They should be extended in context to whichever problem they are being used to solve. 
+
+It could occur that a certain method is implemented for a graph, and not a digraph, which you need. In this case you are left alone to implement the new algorithm for the other graph. The repository should provide plenty of examples to implement new algorithms.
+
 ### Indirected graphs
 
 #### Graph
@@ -308,6 +312,17 @@ The `GraphProperties` contains the following properties/methods:
 
 The `Cyclic()` method requires the graph to have `ParallelEdgesOrSelfLoopsAllowed` evaluate to `false`. If the graph is not connected, it will raise an `NotConnectedGraphException` exception.
 
+#### ConnectedComponents
+
+The `ConnectedComponents` object detects all the connected components within the graph. It will return a list of subgraphs. The constructor requires an `IGraph` object, either a `Graph` or `Digraph`.
+
+The `ConnectedComponents` object contains the following properties/methods:
+
+ * `bool Connected(int v, int w)` returns `true` if the vertices `v` and `w` are connected.
+ * `int Id(int v)` returns the component id of the vertex `v`.
+ * `int Count` returns the count of the components.
+ * `bool IsConnected` will return `true` if the graph is connected, i.e. there is only one component.
+
 ## Directed graphs
 
 #### Digraph
@@ -359,18 +374,19 @@ The `Topological` object contains the following methods:
 
  * `IEnumerable<int> Order()` returns an enumerator with the vertices of the DAG in topological order.
 
-### Both graphs
 
-#### ConnectedComponents
+#### KosarajuSharirSCC
 
-The `ConnectedComponents` object detects all the connected components within the graph. It will return a list of subgraphs. The constructor requires an `IGraph` object, either a `Graph` or `Digraph`.
+The `KosarajuSharirSCC` object will find the strongly connected components with a digraph. The constructor requires a `Digraph` object.
 
-The `ConnectedComponents` object contains the following properties/methods:
+The algorithm helps to answer questions such as: _Are two given vertices strong connected?_ and _How many strong components does the digraph have?_.
 
- * `bool Connected(int v, int w)` returns `true` if the vertices `v` and `w` are connected.
- * `int Id(int v)` returns the component id of the vertex `v`.
- * `int Count` returns the count of the components.
- * `bool IsConnected` will return `true` if the graph is connected, i.e. there is only one component.
+The `KosarajuSharirSCC` object contains the following properties/methods:
+
+ * `bool StronglyConnected(int v, int w)` returns `true` if the vertices `v` and `w` are strongly connected.
+ * `int Id(int v)` returns the identifier of the strongly connected component.
+ * `int Count` returns the number of strongly connected components.
+ * `override string ToString()` returns a string representation of the SCC.
 
 ### Graph builders
 
