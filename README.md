@@ -10,7 +10,7 @@ This repository contains various graph algorithms.
 ## Applied examples
 
  1. [Passcode derivation (Project Euler)](/passcode_derivation.md)
- 2. Mathematics prerequisite scheduling
+ 2. [Precedence-contrained scheduling](/pc_scheduling.md)
  3. ...
 
 ## Terminology
