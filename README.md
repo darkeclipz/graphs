@@ -6,6 +6,8 @@ This repository contains various graph algorithms.
 
  * [Example with `Graph`](/example_graph.md)
  * [Example with `SymbolGraph`](/example_symbolgraph.md)
+ * Example with `Digraph`
+ * Example with `SymbolDigraph`
 
 ## Applied examples
 
