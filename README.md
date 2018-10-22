@@ -156,7 +156,8 @@ The `Diraph` object contains the following properties/methods:
 
  * `Vertices` returns the number of vertices.
  * `Edges` returns the number of edges.
- * `void AddEdge(int v, int u)` adds an edge from `v` to `u`.
+ * `void AddEdge(int v, int w)` adds an edge from `v` to `w`.
+ * `void HasEdge(int v, int w)` returns `true` if `v` is connected to `w`.
  * `IEnumerable<int> Adjacent(int v)` returns an `IEnumerable` for the adjacent vertices of `v`.
  * `override string ToString()` returns a string representation of the graph.
  * `Digraph Reverse()` returns the digraph with reversed edges.

@@ -39,6 +39,8 @@ namespace GraphAlgorithms.Directed
             Edges++;
         }
 
+        public bool HasEdge(int v, int w) => _adj[v].Contains(w);
+
         public IEnumerable<int> Adjacent(int v)
         {
             foreach (int i in _adj[v])
