@@ -2,6 +2,11 @@
 
 This repository contains various graph algorithms.
 
+## Examples
+
+ * [Example with `Graph`](/example_graph.md)
+ * [Example with `SymbolGraph`](/example_symbolgraph.md)
+
 ## Applied examples
 
  1. [Passcode derivation (Project Euler)](/passcode_derivation.md)
@@ -22,192 +27,8 @@ This is an overview of the terminology:
  * _Wiener index_: the _Wiener index_ of a graph is the sum of the lengths of the shortest possible paths between all pair of vertices.
  * _girth_: the _girth_ of a graph is the length of the shortest cycle in the graph.
  * _DAG_: a _DAG_ is a directed acyclic graph.
-
-## Example
-
-### Example with `Graph`
-
-The following example will show the basics.
-
-![graph1](img/graph1.png)
-
-The following text can be used with the `GraphBuilder` to generate the graph.
-
-```
-12
-16
-8 4
-2 3
-1 11
-0 6
-3 6
-10 3
-7 11
-7 8
-11 8
-2 0
-6 2
-5 2
-5 10
-5 0
-8 1
-4 1
-```
-
-Load the graph in the following way:
-
-```csharp
-var graph = GraphBuilder.GenerateGraph("../../../graph2.txt", allowSelfLoop: false, allowParallelEdges: false);
-Console.WriteLine(graph.ToString());
-```
-
-This yields the following information about the graph:
-
-```
-0: 6 2 5 (degree: 3)
-1: 11 8 4 (degree: 3)
-2: 3 0 6 5 (degree: 4)
-3: 2 6 10 (degree: 3)
-4: 8 1 (degree: 2)
-5: 2 10 0 (degree: 3)
-6: 0 3 2 (degree: 3)
-7: 11 8 (degree: 2)
-8: 4 7 11 1 (degree: 4)
-9: (degree: 0)
-10: 3 5 (degree: 2)
-11: 1 7 8 (degree: 3)
-Max degree: 4
-Average degree: 2,66666666666667
-```
-
-To find all the connected components in this graph, use the `ConnectedComponent` object:
-
-```csharp
-var cc = new ConnectedComponents(graph);
-Console.WriteLine(cc.ToString());
-```
-
-Which result in the followng connected components:
-
-```
-Connected components (3 components):
-0: 0 2 3 5 6 10
-1: 1 4 7 8 11
-2: 9
-The graph is disconnected.
-```
-
-A graph is said to be _disconnected_ if it has more than a single component (multiple subgraphs).
-
-### Example with `SymbolGraph`
-
-The following graph is a -- not very accurate -- map of The Netherlands.
-
-![graph 2](img/graph2.png)
-
-The graph can be created with `GraphBuilder` and the following text:
-
-```
-LWD DRA
-DRA GRO
-ASN DRA
-ALM DRA
-ASN EMM
-ZWL EMM
-ZWL ASN
-DRA ZWL
-AMS ALM
-AME ZWL
-AME ARN
-ARN ZWL
-UTR ARN
-AMS UTR
-AMS DNH
-DNH ROT
-UTR AME
-```
-
-If we create the graph, and run the simple analysis:
-
-```csharp
-var graph = GraphBuilder.GenerateSymbolGraph("../../../routes_nl.txt", allowSelfLoop: false, allowParallelEdges: false);
-Console.WriteLine(graph.ToString());
-
-var cc = new ConnectedComponents(graph.Graph);
-Console.WriteLine("\r\n" + cc.ToString());
-```
-
-We will get the following result:
-
-```
-LWD: DRA (degree: 1)
-DRA: LWD GRO ASN ALM ZWL (degree: 5)
-GRO: DRA (degree: 1)
-ASN: DRA EMM ZWL (degree: 3)
-ALM: DRA AMS (degree: 2)
-EMM: ASN ZWL (degree: 2)
-ZWL: EMM ASN DRA AME ARN (degree: 5)
-AMS: ALM UTR DNH (degree: 3)
-AME: ZWL ARN UTR (degree: 3)
-ARN: AME ZWL UTR (degree: 3)
-UTR: ARN AMS AME (degree: 3)
-DNH: AMS ROT (degree: 2)
-ROT: DNH (degree: 1)
-Max degree: 5
-Average degree: 2,61538461538462
-
-Connected components (1 component):
-0: 0 1 2 3 4 5 6 7 8 9 10 11 12
-The graph is connected.
-```
-
-If we want to find the shortest path from `DRA` to `UTR`:
-
-```csharp
-var bfs = new BreadthFirstPaths(graph.Graph, graph.Index("DRA"));
-var sb = new StringBuilder();
-foreach (var v in bfs.PathTo(graph.Index("UTR")))
-    sb.Append($"{graph.Name(v)}->");
-Console.WriteLine(sb.ToString().Substring(0, sb.ToString().Length - 2));
-```
-
-Which gives the following route:
-
-```
-DRA->ALM->AMS->UTR
-```
-
-We can also find more useful information about a graph with `GraphProperties`:
-
-```csharp
-var prop = new GraphProperties(graph.Graph);
-Console.WriteLine(prop.ToString());
-```
-
-Which gives the following information:
-
-```
-Diameter: 7
-Radius: 4
-Center: 4
-Wiener-index: 277
-Cyclic: yes
-Girth: 3
-Eccentricities:
-  0 with eccentricity 6
-  1 with eccentricity 5
-  2 with eccentricity 6
-  3 with eccentricity 6
-  4 with eccentricity 4
-  5 with eccentricity 7
-  6 with eccentricity 6
-  7 with eccentricity 5
-  8 with eccentricity 5
-  9 with eccentricity 5
-  10 with eccentricity 5
-  11 with eccentricity 6
-  12 with eccentricity 7
-```
+ * _strong connectivity_: in a digraph, two vertices are strong connected if it is possible to visit both `w` from `v`, and `v` to `w`.
+ * _reachability_: if there is a directed path from a vertex `v` to another given vertex `w`.
 
 ## API
 

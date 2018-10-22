@@ -55,7 +55,7 @@ namespace GraphAlgorithms
             //    Console.WriteLine(String.Join("-", cycle));
             //}
 
-            var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/digraph2.txt", allowParallelEdges: false, allowSelfLoop: false);
+            //var digraph = GraphBuilder.GenerateDigraph("../../../Graphs/digraph2.txt", allowParallelEdges: false, allowSelfLoop: false);
             //var topological = new Topological(digraph);
 
             //Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no")}");
@@ -67,9 +67,19 @@ namespace GraphAlgorithms
             //}
             //Console.WriteLine();
 
-            var scc = new KosarajuSharirSCC(digraph);
-            Console.WriteLine(scc.ToString());
+            //var scc = new KosarajuSharirSCC(digraph);
+            //Console.WriteLine(scc.ToString());
 
+            var digraph = GraphBuilder.GenerateSymbolDigraph("../../../Graphs/prerequisite_scheduling.txt", allowParallelEdges: false, allowSelfLoop: false);
+            var topological = new Topological(digraph.Digraph);
+
+            Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no")}");
+            Console.WriteLine("Precedence-constrained schedule (DAG in topological order):");
+
+            foreach(int v in topological.Order())
+            {
+                Console.WriteLine($"{v}: {digraph.Name(v)}");
+            }
 
             Console.ReadKey();
         }

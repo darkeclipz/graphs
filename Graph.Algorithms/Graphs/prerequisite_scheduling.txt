@@ -1,0 +1,15 @@
+﻿Advanced_Programming Scientific_Computing
+Scientific_Computing Computational_Biology
+Introduction_to_CS Algorithms
+Introduction_to_CS Advanced_Programming
+Theoretical_CS Computational_Biology
+Theoretical_CS Artifical_Intelligence
+Artifical_Intelligence Robotics
+Artifical_Intelligence Neural_Networks
+Artifical_Intelligence Machine_Learning
+Machine_Learning Neural_Networks
+Algorithms Theoretical_CS
+Algorithms Databases
+Algorithms Scientific_Computing
+Calculus Linear_Algebra
+Linear_Algebra Theoretical_CS

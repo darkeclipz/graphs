@@ -53,5 +53,18 @@ namespace GraphAlgorithms
             var symbolGraph = new SymbolGraph(input, allowSelfLoop, allowParallelEdges);
             return symbolGraph;
         }
+
+        public static SymbolDigraph GenerateSymbolDigraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)
+        {
+            var lines = File.ReadAllLines(file);
+            var input = new List<Tuple<string, string>>();
+            foreach (var line in lines)
+            {
+                var connection = line.Split(' ');
+                input.Add(new Tuple<string, string>(connection[0], connection[1]));
+            }
+            var symbolGraph = new SymbolDigraph(input, allowSelfLoop, allowParallelEdges);
+            return symbolGraph;
+        }
     }
 }
