@@ -4,10 +4,10 @@ This repository contains various graph algorithms. The algorithms are C# impleme
 
 ## Examples
 
- * [Example with `Graph`](/example_graph.md)
- * [Example with `SymbolGraph`](/example_symbolgraph.md)
- * Example with `Digraph`
- * Example with `SymbolDigraph`
+ * [Example with `Graph`](/example_graph.md) [[API](#graph)]
+ * [Example with `SymbolGraph`](/example_symbolgraph.md) [[API](#symbolgraph)]
+ * Example with `Digraph` [[API](#digraph)]
+ * Example with `SymbolDigraph` [[API](#symboldigraph)]
 
 ## Applied examples
 
