@@ -30,7 +30,6 @@ namespace GraphAlgorithms.Undirected
             _marked[v] = true;
 
             foreach(var w in g.Adjacent(v))
-            {
                 if (!_marked[w])
                 {
                     _edgeTo[w] = v;
@@ -38,7 +37,7 @@ namespace GraphAlgorithms.Undirected
                 }
                 else if(_detailedTrace)
                     Console.WriteLine("".PadLeft(depth * 2, ' ') + $"check {w}");
-            }
+            
 
             if (_detailedTrace) Console.WriteLine("".PadLeft(depth * 2, ' ') + $"done {v}");
         }

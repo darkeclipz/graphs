@@ -40,10 +40,10 @@ namespace GraphAlgorithms.Undirected
 
         public double Weight()
         {
-            double rt = 0f;
+            double t = 0f;
             foreach (var e in Edges())
-                rt += e.Weight;
-            return rt;
+                t += e.Weight;
+            return t;
         }
 
     }

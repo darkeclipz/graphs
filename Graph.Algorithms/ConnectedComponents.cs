@@ -14,13 +14,12 @@ namespace GraphAlgorithms
             _marked = new List<bool>(new bool[g.V]);
             _id = new List<int>(new int[g.V]);
             for(int s = 0; s < g.V; s++)
-            {
                 if(!_marked[s])
                 {
                     DFS(g, s);
                     Count++;
                 }
-            }
+            
         }
 
         private void DFS(IGraph g, int v)

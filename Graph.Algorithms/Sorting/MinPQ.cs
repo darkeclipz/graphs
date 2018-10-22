@@ -33,7 +33,7 @@ namespace GraphAlgorithms.Sorting
 
         private bool Less(int i, int j)
         {
-            return _pq[i].CompareTo((T)_pq[j]) < 0;
+            return _pq[i].CompareTo((T)_pq[j]) > 0;
         }
 
         private void Exchange(int i, int j)
