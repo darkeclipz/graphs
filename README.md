@@ -224,6 +224,14 @@ The `KosarajuSharirSCC` object contains the following properties/methods:
 
  The Kosaraju-Sharir algorithm helps to answer questions such as: _Are two given vertices strong connected?_ and _How many strong components does the digraph have?_.
 
+#### TransitiveClosure
+
+The `TransitiveClosure` object will determine if it is possible to reach from vertex `v` to any other given vertex `w`. The constructor requires a `Digraph` or a `SymbolGraph`.
+
+The `TransitiveClosure` object contains the following properties:
+
+* `bool Reachable(int v, int w)` returns `true` if it possible to go from vertex `v` to another vertex `w`.
+
 ### Graph builders
 
 #### GraphBuilder
