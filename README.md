@@ -168,6 +168,19 @@ The `Diraph` object contains the following properties/methods:
  * `SelfLoopException` is raised when a self-loop is created and `allowSelfLoops` is `false`.
  * `ParallelEdgeException` is raised when a duplicate edge is created and `allowParallelEdges` is `false`.
 
+#### SymbolDigraph
+
+The `SymbolDigraph` object is a symbol table wrapper on the `Digraph` object. It will map strings to an index-based digraph. The constructor requires a `List<Tuple<string, string>>` of inputs, where each tuple is a from/to edge. It also has the `allowSelfLoops` and `allowParallelEdges` checks.
+
+The `SymbolDigraph` object contains the following properties/methods:
+
+ * `bool Contains(string s)` returns `true` if the digraph contains the symbol `s`.
+ * `IEnumerable<string> Keys` returns an `IEnumberable` with the keys.
+ * `int Index(string s)` returns the integer index of the symbol `s`.
+ * `string Name(int v)` returns the symbol for the integer index `v`.
+ * `Digraph Digraph` returns the digraph with integer indices.
+ * `override string ToString()` returns a string representation of the digraph.
+
 #### DirectedDFS
 
 The `DirectedDFS` object will run the DFS algorithm on a digraph. The object requires a `Digraph` and a source vertex `s`, or a list of vertices.
