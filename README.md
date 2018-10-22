@@ -230,6 +230,8 @@ The `GraphBuilder` object contains static methods to generate graphs. The `Graph
 
  * `Graph GenerateGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
  * `SymbolGraph GenerateSymbolGraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
+ * `Digraph GenerateDigraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
+ * `SymbolDigraph GenerateSymbolDigraph(string file, bool allowSelfLoop = true, bool allowParallelEdges = true)`.
 
 ##### `Graph` format
 
