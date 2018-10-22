@@ -17,7 +17,7 @@ namespace GraphAlgorithms
             var vertices = int.Parse(lines[0]);
             var graph = new Graph(vertices, allowSelfLoop, allowParallelEdges);
 
-            for(var i=2; i < lines.Length; i++)
+            for (var i = 2; i < lines.Length; i++)
             {
                 var connection = lines[i].Split(' ').Take(2).Select(v => int.Parse(v)).ToList();
                 graph.AddEdge(connection[0], connection[1]);
@@ -65,7 +65,7 @@ namespace GraphAlgorithms
         {
             var lines = File.ReadAllLines(file);
             var input = new List<Tuple<string, string>>();
-            foreach(var line in lines)
+            foreach (var line in lines)
             {
                 var connection = line.Split(' ');
                 input.Add(new Tuple<string, string>(connection[0], connection[1]));
@@ -95,10 +95,8 @@ namespace GraphAlgorithms
 
         public static double GetDouble(string value, double defaultValue)
         {
-            double result;
-
             // Try parsing in the current culture
-            if (!double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.CurrentCulture, out result) &&
+            if (!double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.CurrentCulture, out double result) &&
                 // Then try in US english
                 !double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out result) &&
                 // Then in neutral language
