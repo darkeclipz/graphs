@@ -1,6 +1,6 @@
 # Graph algorithms
 
-This repository contains various graph algorithms. The algorithms are C# implementations of the algorithms in the book _Algorithms (4th), Robert Sedgewick, Kevin Wayne_.
+This repository contains various graph algorithms. The algorithms are C# implementations of the algorithms that are described in the book _Algorithms (4th), Robert Sedgewick, Kevin Wayne_.
 
 ## Examples
 
