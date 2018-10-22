@@ -42,9 +42,7 @@ Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no"
 Console.WriteLine("Precedence-constrained schedule (DAG in topological order):");
 
 foreach(int v in topological.Order())
-{
     Console.WriteLine($"{v}: {digraph.Name(v)}");
-}
 
 Console.ReadKey();
 ```
