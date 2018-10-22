@@ -27,7 +27,7 @@ namespace GraphAlgorithms.Undirected
         {
             var bfs = new BreadthFirstPaths(_g, v);
             var eccentricity = 0;
-            for(int u = 0; u < _g.Vertices; u++)
+            for(int u = 0; u < _g.V; u++)
                 eccentricity = Math.Max(eccentricity, bfs.DistanceTo(u));
             return eccentricity;
         }
@@ -39,7 +39,7 @@ namespace GraphAlgorithms.Undirected
         public int Diameter()
         {
             var diameter = 0;
-            for (var v = 0; v < _g.Vertices; v++)
+            for (var v = 0; v < _g.V; v++)
                 diameter = Math.Max(diameter, Eccentricity(v));
             return diameter;
         }
@@ -51,7 +51,7 @@ namespace GraphAlgorithms.Undirected
         public int Radius()
         {
             var radius = int.MaxValue;
-            for (var v = 0; v < _g.Vertices; v++)
+            for (var v = 0; v < _g.V; v++)
                 radius = Math.Min(radius, Eccentricity(v));
             return radius;
         }
@@ -62,7 +62,7 @@ namespace GraphAlgorithms.Undirected
         /// <returns></returns>
         public int Center() {
             var radius = Radius();
-            for (var v = 0; v < _g.Vertices; v++)
+            for (var v = 0; v < _g.V; v++)
                 if (Eccentricity(v) == radius)
                     return v;
             return -1;
@@ -77,11 +77,11 @@ namespace GraphAlgorithms.Undirected
         {
             int index = 0;
 
-            for(int v = 0; v < _g.Vertices; v++)
+            for(int v = 0; v < _g.V; v++)
             {
                 var bfs = new BreadthFirstPaths(_g, v);
 
-                for (int u = 0; u < _g.Vertices; u++)
+                for (int u = 0; u < _g.V; u++)
                 {
                     if (v == u) continue;
                     index += bfs.DistanceTo(u);
@@ -114,11 +114,11 @@ namespace GraphAlgorithms.Undirected
             if (!Cyclic()) return int.MaxValue;
             var girth = int.MaxValue;
 
-            for (int s = 0; s < _g.Vertices; s++)
+            for (int s = 0; s < _g.V; s++)
             {
                 var bfs = new BreadthFirstPaths(_g, s);
 
-                for(int v = 0; v < _g.Vertices; v++)
+                for(int v = 0; v < _g.V; v++)
                 {
                     if (s == v) continue;
                     var path = bfs.PathTo(v);
@@ -143,7 +143,7 @@ namespace GraphAlgorithms.Undirected
             sb.AppendLine($"Cyclic: {(Cyclic() ? "yes" : "no")}");
             sb.AppendLine($"Girth: {Girth()}");
             sb.AppendLine($"Eccentricities:");
-            for (int v = 0; v < _g.Vertices; v++)
+            for (int v = 0; v < _g.V; v++)
                 sb.AppendLine($"  {v} with eccentricity {Eccentricity(v)}");
             return sb.ToString();
         }

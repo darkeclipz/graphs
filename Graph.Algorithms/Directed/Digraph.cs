@@ -12,7 +12,7 @@ namespace GraphAlgorithms.Directed
 
         public Digraph(int vertices, bool allowSelfLoops = true, bool allowParallelEdges = true)
         {
-            Vertices = vertices;
+            V = vertices;
             _allowSelfLoops = allowSelfLoops;
             _allowParallelEdges = allowParallelEdges;
 
@@ -20,14 +20,13 @@ namespace GraphAlgorithms.Directed
                 _adj.Add(new List<int>());
         }
 
-        public int Vertices { get; }
-
-        public int Edges { get; private set; }
+        public int V { get; }
+        public int E { get; private set; }
 
         public void AddEdge(int v, int w)
         {
-            if (v >= Vertices)
-                throw new VertexIndexOutOfRangeException($"Unable to add edge because vertex {v} doesn't exist (total vertices: {Vertices}).");
+            if (v >= V)
+                throw new VertexIndexOutOfRangeException($"Unable to add edge because vertex {v} doesn't exist (total vertices: {V}).");
 
             if (!_allowParallelEdges && _adj[v].Contains(w))
                 throw new ParallelEdgeException($"Unable to add an edge from {v} to {w} because it would create a parallel edge.");
@@ -36,7 +35,7 @@ namespace GraphAlgorithms.Directed
                 throw new SelfLoopException($"Unable to add an edge from {v} to {w} because it would create a self loop.");
 
             _adj[v].Add(w);
-            Edges++;
+            E++;
         }
 
         public bool HasEdge(int v, int w) => _adj[v].Contains(w);
@@ -49,8 +48,8 @@ namespace GraphAlgorithms.Directed
 
         public Digraph Reverse()
         {
-            var reversedGraph = new Digraph(Vertices, _allowSelfLoops, _allowParallelEdges);
-            for (int v = 0; v < Vertices; v++)
+            var reversedGraph = new Digraph(V, _allowSelfLoops, _allowParallelEdges);
+            for (int v = 0; v < V; v++)
                 foreach (var w in Adjacent(v))
                     reversedGraph.AddEdge(w, v);
             return reversedGraph;
@@ -66,14 +65,14 @@ namespace GraphAlgorithms.Directed
         public static int MaxDegreeOut(Digraph g)
         {
             int maxDegreeOut = 0;
-            for (var i = 0; i < g.Vertices; i++)
+            for (var i = 0; i < g.V; i++)
                 maxDegreeOut = Math.Max(maxDegreeOut, DegreeOut(g, i));
             return maxDegreeOut;
         }
 
         public static double AverageDegreeOut(Digraph g)
         {
-            return (double)g.Edges / g.Vertices;
+            return (double)g.E / g.V;
         }
 
         public override string ToString()

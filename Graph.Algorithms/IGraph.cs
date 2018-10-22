@@ -4,9 +4,9 @@ namespace GraphAlgorithms
 {
     public interface IGraph
     {
-        int Edges { get; }
+        int E { get; }
         bool ParallelEdgesOrSelfLoopsAllowed { get; }
-        int Vertices { get; }
+        int V { get; }
         void AddEdge(int v, int w);
         IEnumerable<int> Adjacent(int v);
         string ToString();

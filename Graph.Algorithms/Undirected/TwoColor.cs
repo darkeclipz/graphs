@@ -11,9 +11,9 @@ namespace GraphAlgorithms.Undirected
 
         public TwoColor(Graph g)
         {
-            _marked = new List<bool>(new bool[g.Vertices]);
-            _color = new List<bool>(new bool[g.Vertices]);
-            for(var s=0; s < g.Vertices; s++)
+            _marked = new List<bool>(new bool[g.V]);
+            _color = new List<bool>(new bool[g.V]);
+            for(var s=0; s < g.V; s++)
             {
                 if (!_marked[s])
                     DFS(g, s);

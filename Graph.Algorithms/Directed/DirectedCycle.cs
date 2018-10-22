@@ -13,10 +13,10 @@ namespace GraphAlgorithms.Directed
 
         public DirectedCycle(Digraph g)
         {
-            _onStack = new List<bool>(new bool[g.Vertices]);
-            _edgeTo = new List<int>(new int[g.Vertices]);
-            _marked = new List<bool>(new bool[g.Vertices]);
-            for (int v = 0; v < g.Vertices; v++)
+            _onStack = new List<bool>(new bool[g.V]);
+            _edgeTo = new List<int>(new int[g.V]);
+            _marked = new List<bool>(new bool[g.V]);
+            for (int v = 0; v < g.V; v++)
                 if (!_marked[v]) DFS(g, v);
         }
 

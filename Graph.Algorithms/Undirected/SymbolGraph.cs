@@ -41,7 +41,7 @@ namespace GraphAlgorithms.Undirected
         public override string ToString()
         {
             var sb = new StringBuilder();
-            for (int i = 0; i < Graph.Vertices; i++)
+            for (int i = 0; i < Graph.V; i++)
             {
                 sb.Append($"{Name(i)}:");
                 foreach (var edge in Graph.Adjacent(i))

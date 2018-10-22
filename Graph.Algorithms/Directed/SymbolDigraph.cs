@@ -42,7 +42,7 @@ namespace GraphAlgorithms.Directed
         public override string ToString()
         {
             var sb = new StringBuilder();
-            for (int i = 0; i < Digraph.Vertices; i++)
+            for (int i = 0; i < Digraph.V; i++)
             {
                 sb.Append($"{Name(i)}:");
                 foreach (var edge in Digraph.Adjacent(i))

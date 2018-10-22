@@ -12,7 +12,7 @@ namespace GraphAlgorithms.Undirected
 
         public Graph(int vertices, bool allowSelfLoops = true, bool allowParallelEdges = true)
         {
-            Vertices = vertices;
+            V = vertices;
             _allowSelfLoops = allowSelfLoops;
             _allowParallelEdges = allowParallelEdges;
 
@@ -20,9 +20,8 @@ namespace GraphAlgorithms.Undirected
                 _adj.Add(new List<int>());
         }
 
-        public int Vertices { get; }
-
-        public int Edges { get; private set; }
+        public int V { get; }
+        public int E { get; private set; }
 
         public void AddEdge(int v, int w)
         {
@@ -34,7 +33,7 @@ namespace GraphAlgorithms.Undirected
 
             _adj[v].Add(w);
             _adj[w].Add(v);
-            Edges++;
+            E++;
         }
 
         public bool HasEdge(int v, int w) => _adj[v].Contains(w);
@@ -75,7 +74,7 @@ namespace GraphAlgorithms.Undirected
         {
             var maxDegree = 0;
 
-            for (var i = 0; i < g.Vertices; i++)
+            for (var i = 0; i < g.V; i++)
                 maxDegree = Math.Max(maxDegree, Degree(g, i));
 
             return maxDegree;
@@ -83,7 +82,7 @@ namespace GraphAlgorithms.Undirected
 
         public static double AverageDegree(Graph g)
         {
-            return 2 * (double)g.Edges / g.Vertices;
+            return 2 * (double)g.E / g.V;
         }
 
         public bool ParallelEdgesOrSelfLoopsAllowed

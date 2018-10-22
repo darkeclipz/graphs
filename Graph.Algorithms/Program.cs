@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GraphAlgorithms.Directed;
+using GraphAlgorithms.Sorting;
 using GraphAlgorithms.Undirected;
 
 namespace GraphAlgorithms
@@ -69,15 +70,35 @@ namespace GraphAlgorithms
             //var scc = new KosarajuSharirSCC(digraph);
             //Console.WriteLine(scc.ToString());
 
-            var digraph = GraphBuilder.GenerateSymbolDigraph("../../../Graphs/prerequisite_scheduling.txt", allowParallelEdges: false, allowSelfLoop: false);
-            var topological = new Topological(digraph.Digraph);
+            //var digraph = GraphBuilder.GenerateSymbolDigraph("../../../Graphs/prerequisite_scheduling.txt", allowParallelEdges: false, allowSelfLoop: false);
+            //var topological = new Topological(digraph.Digraph);
 
-            Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no")}");
-            Console.WriteLine("Precedence-constrained schedule (DAG in topological order):");
+            //Console.WriteLine($"Directed acyclic graph: {(topological.IsDAG() ? "yes" : "no")}");
+            //Console.WriteLine("Precedence-constrained schedule (DAG in topological order):");
 
-            foreach(int v in topological.Order())
+            //foreach(int v in topological.Order())
+            //{
+            //    Console.WriteLine($"{v}: {digraph.Name(v)}");
+            //}
+
+            //Console.ReadKey();
+
+            var rng = new Random();
+
+            var edges = new List<Edge>();
+            var pq = new MaxPQ<Edge>(16);
+            for (int i = 0; i < 16; i++)
             {
-                Console.WriteLine($"{v}: {digraph.Name(v)}");
+                var edge = new Edge(0, 0, rng.Next(0, 100));
+                pq.Insert(edge);
+                Console.WriteLine($"{i}: {edge.Weight}");
+            }
+
+            Console.WriteLine("PriorityQueue output:");
+            while(!pq.IsEmpty)
+            {
+                var e = (Edge)pq.DeleteMax();
+                Console.WriteLine($"{e.Weight}");
             }
 
             Console.ReadKey();

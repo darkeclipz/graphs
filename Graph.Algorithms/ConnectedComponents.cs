@@ -11,9 +11,9 @@ namespace GraphAlgorithms
 
         public ConnectedComponents(IGraph g)
         {
-            _marked = new List<bool>(new bool[g.Vertices]);
-            _id = new List<int>(new int[g.Vertices]);
-            for(int s = 0; s < g.Vertices; s++)
+            _marked = new List<bool>(new bool[g.V]);
+            _id = new List<int>(new int[g.V]);
+            for(int s = 0; s < g.V; s++)
             {
                 if(!_marked[s])
                 {

@@ -13,8 +13,8 @@ namespace GraphAlgorithms.Undirected
             if (g.ParallelEdgesOrSelfLoopsAllowed)
                 throw new ParallelEdgesOrSelfLoopsAllowedException("Parallel edges or self-loops are not allowed for cyclic graph detection.");
 
-            _marked = new List<bool>(new bool[g.Vertices]);
-            for (var s = 0; s < g.Vertices; s++)
+            _marked = new List<bool>(new bool[g.V]);
+            for (var s = 0; s < g.V; s++)
                 if (!_marked[s])
                     DFS(g, s, s);
         }

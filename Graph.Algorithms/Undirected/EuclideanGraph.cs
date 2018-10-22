@@ -31,14 +31,14 @@ namespace GraphAlgorithms.Undirected
 
             using (var graphics = Graphics.FromImage(bmp))
             {
-                for(int v=0; v < g.Vertices; v++)
+                for(int v=0; v < g.V; v++)
                 {
-                    int x = (int)(Math.Cos((float)v / g.Vertices * 2 * Math.PI) * cx / spread + cx);
-                    int y = (int)(Math.Sin((float)v / g.Vertices * 2 * Math.PI) * cy / spread + cy);
+                    int x = (int)(Math.Cos((float)v / g.V * 2 * Math.PI) * cx / spread + cx);
+                    int y = (int)(Math.Sin((float)v / g.V * 2 * Math.PI) * cy / spread + cy);
                     positions.Add(new Tuple<int, int>(x, y));
                 }
 
-                for (int v = 0; v < g.Vertices; v++)
+                for (int v = 0; v < g.V; v++)
                 {
                     var p1 = positions[v];
                     foreach(var u in g.Adjacent(v))

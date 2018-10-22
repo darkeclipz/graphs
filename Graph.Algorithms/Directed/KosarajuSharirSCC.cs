@@ -12,8 +12,8 @@ namespace GraphAlgorithms.Directed
 
         public KosarajuSharirSCC(Digraph g)
         {
-            _marked = new List<bool>(new bool[g.Vertices]);
-            _id = new List<int>(new int[g.Vertices]);
+            _marked = new List<bool>(new bool[g.V]);
+            _id = new List<int>(new int[g.V]);
             var order = new DepthFirstOrder(g.Reverse());
             foreach(var s in order.ReversePost())
                 if (!_marked[s])

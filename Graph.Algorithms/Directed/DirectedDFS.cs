@@ -13,7 +13,7 @@ namespace GraphAlgorithms.Directed
         public DirectedDFS(Digraph g, int s)
         {
             _dg = g;
-            _marked = new List<bool>(new bool[g.Vertices]);
+            _marked = new List<bool>(new bool[g.V]);
             _sources = new List<int>();
             _sources.Add(s);
             DFS(g, s);
@@ -22,7 +22,7 @@ namespace GraphAlgorithms.Directed
         public DirectedDFS(Digraph g, List<int> sources)
         {
             _dg = g;
-            _marked = new List<bool>(new bool[g.Vertices]);
+            _marked = new List<bool>(new bool[g.V]);
             _sources = sources;
             foreach (var s in sources)
                 if(!_marked[s]) DFS(g, s);

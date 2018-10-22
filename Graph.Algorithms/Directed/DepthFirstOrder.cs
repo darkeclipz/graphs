@@ -17,9 +17,9 @@ namespace GraphAlgorithms.Directed
             _pre = new Queue<int>();
             _post = new Queue<int>();
             _reversePost = new Stack<int>();
-            _marked = new List<bool>(new bool[g.Vertices]);
+            _marked = new List<bool>(new bool[g.V]);
 
-            for(int v=0; v < g.Vertices; v++)
+            for(int v=0; v < g.V; v++)
                 if(!_marked[v]) DFS(g, v);
         }
 

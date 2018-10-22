@@ -13,8 +13,8 @@ namespace GraphAlgorithms.Undirected
 
         public DepthFirstPaths(Graph g, int s, bool detailedTrace = false)
         {
-            _marked = new List<bool>(new bool[g.Vertices]);
-            _edgeTo = new List<int>(new int[g.Vertices]);
+            _marked = new List<bool>(new bool[g.V]);
+            _edgeTo = new List<int>(new int[g.V]);
             _source = s;
             _detailedTrace = detailedTrace;
             if(detailedTrace)

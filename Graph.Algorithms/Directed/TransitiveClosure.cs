@@ -12,7 +12,7 @@ namespace GraphAlgorithms.Directed
         public TransitiveClosure(Digraph g)
         {
             _all = new List<DirectedDFS>();
-            for (int v = 0; v < g.Vertices; v++)
+            for (int v = 0; v < g.V; v++)
                 _all.Add(new DirectedDFS(g, v));
         }
 
