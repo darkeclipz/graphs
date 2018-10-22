@@ -29,14 +29,12 @@ namespace GraphAlgorithms.Undirected
                 var v = queue.Dequeue();
 
                 foreach (var w in g.Adjacent(v))
-                {
                     if(!_marked[w])
                     {
                         _edgeTo[w] = v;
                         _marked[w] = true;
                         queue.Enqueue(w);
                     }
-                }
             }
         }
 

@@ -2,6 +2,7 @@
 using GraphAlgorithms.Undirected;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,25 @@ namespace GraphAlgorithms
             {
                 var connection = lines[i].Split(' ').Take(2).Select(v => int.Parse(v)).ToList();
                 graph.AddEdge(connection[0], connection[1]);
+            }
+
+            return graph;
+        }
+
+        public static EdgeWeightedGraph GenerateEdgeWeightedGraph(string file)
+        {
+            var lines = File.ReadAllLines(file);
+            var vertices = int.Parse(lines[0]);
+            var graph = new EdgeWeightedGraph(vertices);
+
+            for (var i = 2; i < lines.Length; i++)
+            {
+                var str = lines[i].Split(' ');
+                var v = int.Parse(str[0]);
+                var w = int.Parse(str[1]);
+                double weight = GetDoubleDot(str[2]);
+                var e = new Edge(v, w, weight);
+                graph.AddEdge(e);
             }
 
             return graph;
@@ -65,6 +85,28 @@ namespace GraphAlgorithms
             }
             var symbolGraph = new SymbolDigraph(input, allowSelfLoop, allowParallelEdges);
             return symbolGraph;
+        }
+
+        public static double GetDoubleDot(string value, double defaultValue = 0f)
+        {
+            double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out double result);
+            return result;
+        }
+
+        public static double GetDouble(string value, double defaultValue)
+        {
+            double result;
+
+            // Try parsing in the current culture
+            if (!double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.CurrentCulture, out result) &&
+                // Then try in US english
+                !double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out result) &&
+                // Then in neutral language
+                !double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture, out result))
+            {
+                result = defaultValue;
+            }
+            return result;
         }
     }
 }

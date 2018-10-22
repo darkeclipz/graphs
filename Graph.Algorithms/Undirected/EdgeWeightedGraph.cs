@@ -39,5 +39,18 @@ namespace GraphAlgorithms.Undirected
                 foreach (var e in Adjacent(v))
                     if (e.Other(v) > v) yield return e;
         }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"Edge weighted graph (V: {V}, E: {E})");
+            foreach(var e in Edges())
+            {
+                var v = e.Either();
+                var w = e.Other(v);
+                sb.AppendLine($"Edge {v} to {w} with weight {e.Weight}");
+            }
+            return sb.ToString();
+        }
     }
 }

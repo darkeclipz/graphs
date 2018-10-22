@@ -83,23 +83,30 @@ namespace GraphAlgorithms
 
             //Console.ReadKey();
 
-            var rng = new Random();
+            //var rng = new Random();
 
-            var edges = new List<Edge>();
-            var pq = new MaxPQ<Edge>(16);
-            for (int i = 0; i < 16; i++)
-            {
-                var edge = new Edge(0, 0, rng.Next(0, 100));
-                pq.Insert(edge);
-                Console.WriteLine($"{i}: {edge.Weight}");
-            }
+            //var edges = new List<Edge>();
+            //var pq = new MaxPQ<Edge>(16);
+            //for (int i = 0; i < 16; i++)
+            //{
+            //    var edge = new Edge(0, 0, rng.Next(0, 100));
+            //    pq.Insert(edge);
+            //    Console.WriteLine($"{i}: {edge.Weight}");
+            //}
 
-            Console.WriteLine("PriorityQueue output:");
-            while(!pq.IsEmpty)
-            {
-                var e = (Edge)pq.DeleteMax();
-                Console.WriteLine($"{e.Weight}");
-            }
+            //Console.WriteLine("PriorityQueue output:");
+            //while(!pq.IsEmpty)
+            //{
+            //    var e = (Edge)pq.DeleteMax();
+            //    Console.WriteLine($"{e.Weight}");
+            //}
+
+            var ewg = GraphBuilder.GenerateEdgeWeightedGraph("../../../Graphs/tiny_ewg.txt");
+            var mst = new LazyPrimMST(ewg);
+            var kruskal = new KruskalMST(ewg);
+            Console.WriteLine(ewg.ToString());
+            Console.WriteLine(mst.ToString());
+            Console.WriteLine(kruskal.ToString());
 
             Console.ReadKey();
         }
